@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">AviaApplication</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
+    <string name="title_main_search">Найти билет</string>
      <string name="title_favorite">Избранное</string>
 </resources>
