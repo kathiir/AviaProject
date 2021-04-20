@@ -27,29 +27,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f78c8f32-4872-428a-a191-e96de59b94b5" name="Default Changelist" comment="Разметка пустое избранное fragment_favorite_flights_empty.xml &#10;Разметка element_of_list_favorite_flights.xml&#10;Добавление цветов &#10;Добавление шрифта roboto_light.ttf&#10;Добавление иконок ic_close.xml, ic_favorite.xml.xml">
-      <change afterPath="$PROJECT_DIR$/.idea/navEditor.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aviaApplication/additions/recyclerView/FlightsRecyclerViewAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aviaApplication/api/models/Flight.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aviaApplication/ui/favoriteFlights/FavoriteFlightsRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aviaApplication/ui/favoriteFlights/FavoriteFlightsViewModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/state_buttons.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_favorite_flights.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aviaApplication/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aviaApplication/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/aviaApplication/ui/favoriteFlights/FavoriteFlightsFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/aviaApplication/ui/favoriteFlights/FavoriteFlightsFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/close.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/like.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/element_of_list_favorite_flights.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/element_of_list_favorite_flights.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_favorite_flights_empty.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/bottom_nav_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/bottom_nav_menu.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/mobile_navigation.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/mobile_navigation.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/themes.xml" afterDir="false" />
-    </list>
+    <list default="true" id="f78c8f32-4872-428a-a191-e96de59b94b5" name="Default Changelist" comment="Изменение цвета(контур) меню выбранной ячейки&#10;Изменение цвета navBar &#10;FlightsRecyclerViewAdapter, если пустой список - отображаем LinearLayout из  fragment_favorite_flights.xml" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -230,7 +208,14 @@
       <option name="project" value="LOCAL" />
       <updated>1618859350591</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Изменение цвета(контур) меню выбранной ячейки&#10;Изменение цвета navBar &#10;FlightsRecyclerViewAdapter, если пустой список - отображаем LinearLayout из  fragment_favorite_flights.xml">
+      <created>1618907406185</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1618907406186</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -247,7 +232,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Разметка пустое избранное fragment_favorite_flights_empty.xml &#10;Разметка element_of_list_favorite_flights.xml&#10;Добавление цветов &#10;Добавление шрифта roboto_light.ttf&#10;Добавление иконок ic_close.xml, ic_favorite.xml.xml" />
-    <option name="LAST_COMMIT_MESSAGE" value="Разметка пустое избранное fragment_favorite_flights_empty.xml &#10;Разметка element_of_list_favorite_flights.xml&#10;Добавление цветов &#10;Добавление шрифта roboto_light.ttf&#10;Добавление иконок ic_close.xml, ic_favorite.xml.xml" />
+    <MESSAGE value="Изменение цвета(контур) меню выбранной ячейки&#10;Изменение цвета navBar &#10;FlightsRecyclerViewAdapter, если пустой список - отображаем LinearLayout из  fragment_favorite_flights.xml" />
+    <option name="LAST_COMMIT_MESSAGE" value="Изменение цвета(контур) меню выбранной ячейки&#10;Изменение цвета navBar &#10;FlightsRecyclerViewAdapter, если пустой список - отображаем LinearLayout из  fragment_favorite_flights.xml" />
   </component>
   <component name="WindowStateProjectService">
     <state x="153" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1618845902028">
