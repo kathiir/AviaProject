@@ -10,17 +10,17 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginStart="@dimen/default_home_margin"
+        android:layout_marginTop="@dimen/default_home_margin"
+        android:layout_marginEnd="@dimen/default_home_margin"
         android:elevation="5dp"
         app:cardCornerRadius="@dimen/default_corner_radius">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="10dp"
             android:background="@drawable/rounded_corners"
-
             android:orientation="vertical">
 
             <TextView
@@ -28,7 +28,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="@string/title_user_name"
-                android:layout_margin="10dp"
+                android:layout_margin="@dimen/default_home_margin"
                 style="@style/TextViewInSettings"/>
 
             <Button
@@ -36,25 +36,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/button_change_name"
+                android:layout_margin="0dp"
                 style="@style/ButtonWithBorders"/>
 
             <Button
                 android:id="@+id/button_change_pass"
                 style="@style/ButtonWithBorders"
+                android:layout_margin="0dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/button_change_pass" />
 
         </LinearLayout>
-
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginStart="@dimen/default_home_margin"
+        android:layout_marginTop="@dimen/default_home_margin"
+        android:layout_marginEnd="@dimen/default_home_margin"
         android:elevation="5dp"
         app:cardCornerRadius="@dimen/default_corner_radius">
 
@@ -71,6 +72,14 @@
                 android:text="@string/title_settings"
                 android:layout_margin="10dp"
                 style="@style/TextViewInSettings"/>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:divider="@drawable/divider_linear_layout"
+                android:showDividers="middle"
+                android:dividerPadding="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -143,22 +152,31 @@
                     android:textColor="@color/cornflower_blue"
                     style="@style/TextViewInSettings"/>
             </LinearLayout>
+            </LinearLayout>
 
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
 
             <Button
                 android:id="@+id/button_payment_history"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/button_payment_history"
+                android:layout_margin="0dp"
                 style="@style/ButtonWithBorders"/>
 
             <Button
                 android:id="@+id/button_teleg_notifications"
                 style="@style/ButtonWithBorders"
+                android:layout_margin="0dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/button_teleg_notifications"/>
 
+            </LinearLayout>
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

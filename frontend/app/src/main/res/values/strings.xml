@@ -1,22 +1,36 @@
 <resources>
     <string name="app_name">AviaApplication</string>
     <string name="app_title_load">AVIA\nPROJECT</string>
-    <string name="login_button">Вход</string>
     <string name="title_home">Личный кабинет</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_favorite">Избранное</string>
-
+<!--home screen buttons & etc.-->
     <string name="title_user_name">Информация о пользователе</string>
     <string name="button_change_name">Изменить имя</string>
     <string name="button_change_pass">Сменить пароль</string>
     <string name="title_settings">Настройки</string>
     <string name="button_teleg_notifications">Подписаться на уведомления в телеграмм</string>
     <string name="button_payment_history">История платежей</string>
-
+<!--Home screen settings-->
     <string name="title_currency">Валюта</string>
     <string name="text_currency">RUB</string>
     <string name="title_country">Регион</string>
     <string name="text_country">Россия</string>
     <string name="title_tickets_count">Куплено билетов</string>
     <string name="text_tickets_count">0</string>
+<!-- login screen-->
+    <string name="text_login_button">Войти</string>
+    <string name="text_login_header">Вход</string>
+    <string name="hint_email">email</string>
+    <string name="hint_pass">Пароль</string>
+    <string name="hint_name">Ваше имя</string>
+<!-- register screen-->
+    <string name="text_register_button">Регистрация</string>
+<!-- recover pass screen-->
+    <string name="title_recover_pass">Сброс пароля</string>
+    <string name="text_recover_pass">Сбросить пароль</string>
+<!-- change pass screen-->
+    <string name="title_change_pass">Смена пароля</string>
+    <string name="text_change_pass">Сменить пароль</string>
+
 </resources>
