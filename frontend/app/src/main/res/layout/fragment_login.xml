@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
+        android:baselineAligned="false"
         android:weightSum="10">
 
             <LinearLayout
@@ -30,13 +31,15 @@
                     style="@style/EditTextOnLoginScreen"
                     android:autoLink="email"
                     android:hint="@string/hint_email"
-                    android:inputType="textEmailAddress" />
+                    android:inputType="textEmailAddress"
+                    android:autofillHints="email"/>
 
                 <EditText
                     android:id="@+id/pass_edit_text"
                     style="@style/EditTextOnLoginScreen"
                     android:hint="@string/hint_pass"
-                    android:inputType="textPassword" />
+                    android:inputType="textPassword"
+                    android:autofillHints="password"/>
 
                 <Button
                     android:id="@+id/button_login"

@@ -29,7 +29,8 @@
                 style="@style/EditTextOnLoginScreen"
                 android:autoLink="email"
                 android:hint="@string/hint_email"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress"
+                android:autofillHints="email" />
 
             <Button
                 android:id="@+id/button_register"
