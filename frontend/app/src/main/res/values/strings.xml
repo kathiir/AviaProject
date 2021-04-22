@@ -2,9 +2,21 @@
     <string name="app_name">AviaApplication</string>
     <string name="app_title_load">AVIA\nPROJECT</string>
     <string name="login_button">Вход</string>
-    <string name="title_home">Home</string>
+    <string name="title_home">Личный кабинет</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_favorite">Избранное</string>
+
     <string name="title_user_name">Информация о пользователе</string>
-    <string name="button_change_name">Имя пользователя</string>
+    <string name="button_change_name">Изменить имя</string>
+    <string name="button_change_pass">Сменить пароль</string>
+    <string name="title_settings">Настройки</string>
+    <string name="button_teleg_notifications">Подписаться на уведомления в телеграмм</string>
+    <string name="button_payment_history">История платежей</string>
+
+    <string name="title_currency">Валюта</string>
+    <string name="text_currency">RUB</string>
+    <string name="title_country">Регион</string>
+    <string name="text_country">Россия</string>
+    <string name="title_tickets_count">Куплено билетов</string>
+    <string name="text_tickets_count">0</string>
 </resources>
