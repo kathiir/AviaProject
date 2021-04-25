@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
+        android:baselineAligned="false"
         android:weightSum="10">
 
         <LinearLayout
@@ -21,27 +22,28 @@
 
             <Button
                 android:id="@+id/button_back"
-                android:text="@string/title_change_pass"
+                android:text="@string/title_change_name"
                 style="@style/ButtonBackOnLoginScreens" />
 
-            <EditText
-                android:id="@+id/pass_first_text"
-                style="@style/EditTextOnLoginScreen"
-                android:hint="@string/hint_pass"
-                android:inputType="textPassword"
-                android:autofillHints="password"/>
 
             <EditText
-                android:id="@+id/pass_second_text"
+                android:id="@+id/name_edit_text"
                 style="@style/EditTextOnLoginScreen"
-                android:hint="@string/hint_sec_pass"
+                android:hint="@string/hint_change_name"
+                android:inputType="text"
+                android:autofillHints="name"/>
+
+            <EditText
+                android:id="@+id/pass_edit_text"
+                style="@style/EditTextOnLoginScreen"
+                android:hint="@string/hint_current_pass"
                 android:inputType="textPassword"
                 android:autofillHints="password"/>
 
             <Button
-                android:id="@+id/button_change_pass"
+                android:id="@+id/button_change_name"
                 style="@style/ButtonOnLoginScreens"
-                android:text="@string/text_change_pass" />
+                android:text="@string/text_change_name" />
 
         </LinearLayout>
     </LinearLayout>

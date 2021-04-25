@@ -19,32 +19,32 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
             android:background="@drawable/rounded_corners"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="10dp">
 
             <TextView
                 android:id="@+id/textview_user_name"
+                style="@style/TextViewInSettings"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="@string/title_user_name"
                 android:layout_margin="@dimen/default_home_margin"
-                style="@style/TextViewInSettings"/>
+                android:text="@string/title_user_name" />
 
             <Button
                 android:id="@+id/button_change_name"
+                style="@style/ButtonWithBorders"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/button_change_name"
                 android:layout_margin="0dp"
-                style="@style/ButtonWithBorders"/>
+                android:text="@string/button_change_name" />
 
             <Button
                 android:id="@+id/button_change_pass"
                 style="@style/ButtonWithBorders"
-                android:layout_margin="0dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="0dp"
                 android:text="@string/button_change_pass" />
 
         </LinearLayout>
@@ -67,119 +67,155 @@
             android:orientation="vertical">
 
             <TextView
+                style="@style/TextViewInSettings"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="@string/title_settings"
                 android:layout_margin="10dp"
-                style="@style/TextViewInSettings"/>
+                android:text="@string/title_settings" />
 
             <LinearLayout
-                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:divider="@drawable/divider_linear_layout"
-                android:showDividers="middle"
                 android:dividerPadding="20dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="@string/title_currency"
-                    style="@style/TextViewInSettings"/>
-
-                <TextView
-                    android:id="@+id/currency_textview"
-                    android:layout_width="0dp"
-                    android:textAlignment="textEnd"
-                    android:layout_height="match_parent"
-                    android:text="@string/text_currency"
-                    android:layout_weight="1"
-                    android:textColor="@color/cornflower_blue"
-                    style="@style/TextViewInSettings"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="@string/title_country"
-                    style="@style/TextViewInSettings"/>
-
-                <TextView
-                    android:id="@+id/country_textview"
-                    android:layout_width="0dp"
-                    android:textAlignment="textEnd"
-                    android:layout_height="match_parent"
-                    android:text="@string/text_country"
-                    android:layout_weight="1"
-                    android:textColor="@color/cornflower_blue"
-                    style="@style/TextViewInSettings"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="@string/title_tickets_count"
-                    style="@style/TextViewInSettings"/>
-
-                <TextView
-                    android:id="@+id/tickets_count_textview"
-                    android:layout_width="0dp"
-                    android:textAlignment="textEnd"
-                    android:layout_height="match_parent"
-                    android:text="@string/text_tickets_count"
-                    android:layout_weight="1"
-                    android:textColor="@color/cornflower_blue"
-                    style="@style/TextViewInSettings"/>
-            </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
                 android:orientation="vertical"
+                android:showDividers="middle">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp">
+
+                    <TextView
+                        style="@style/TextViewInSettings"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/title_currency" />
+
+                    <TextView
+                        android:id="@+id/currency_textview"
+                        style="@style/TextViewInSettings"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="@string/text_currency"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/cornflower_blue" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp">
+
+                    <TextView
+                        style="@style/TextViewInSettings"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/title_country" />
+
+                    <TextView
+                        android:id="@+id/country_textview"
+                        style="@style/TextViewInSettings"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="@string/text_country"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/cornflower_blue" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp">
+
+                    <TextView
+                        style="@style/TextViewInSettings"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/title_tickets_count" />
+
+                    <TextView
+                        android:id="@+id/tickets_count_textview"
+                        style="@style/TextViewInSettings"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="@string/text_tickets_count"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/cornflower_blue" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="vertical"
                 android:padding="10dp">
 
-            <Button
-                android:id="@+id/button_payment_history"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/button_payment_history"
-                android:layout_margin="0dp"
-                style="@style/ButtonWithBorders"/>
+                <Button
+                    android:id="@+id/button_payment_history"
+                    style="@style/ButtonWithBorders"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0dp"
+                    android:text="@string/button_payment_history" />
 
-            <Button
-                android:id="@+id/button_teleg_notifications"
-                style="@style/ButtonWithBorders"
-                android:layout_margin="0dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/button_teleg_notifications"/>
+                <Button
+                    android:id="@+id/button_teleg_notifications"
+                    style="@style/ButtonWithBorders"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0dp"
+                    android:text="@string/button_teleg_notifications" />
+
+                <LinearLayout
+                    android:id="@+id/teleg_confirmation_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_corners_stroke"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/text_confirm"
+                        android:textAlignment="center"
+                        android:layout_marginTop="@dimen/default_home_margin"
+                        style="@style/TextViewInSettings"/>
+
+                    <Button
+                        android:id="@+id/button_get_teleg_link"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Да"
+                        android:layout_marginHorizontal="50dp"
+                        style="@style/ButtonRoyal" />
+
+                </LinearLayout>
+
 
             </LinearLayout>
+
+            <Button
+                android:id="@+id/temp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:id="@+id/temp1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
-
-
 </LinearLayout>
