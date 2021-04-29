@@ -8,7 +8,10 @@ public class City {
         this.cityName = "Абакан";
         this.id = 1;
     }
-
+    public City(String string) {
+        this.cityName = "ZUZAAA";
+        this.id = 1;
+    }
     public Integer getId() {
         return id;
     }

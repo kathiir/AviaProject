@@ -67,7 +67,7 @@ public class FragmentCitiesSearch extends Fragment {
     }
 
     public void updateList(List<City> list) {
-        list.addAll(Arrays.asList(new City(), new City(), new City(), new City(), new City(), new City(), new City(), new City()));
+        list.addAll(Arrays.asList(new City(), new City(), new City(""), new City(), new City(), new City(), new City(), new City()));
         recycleViewAdapterRecentCities.submitList(list);
         recycleViewAdapterAllCities.submitList(Arrays.asList(new City(), new City(), new City()));
 

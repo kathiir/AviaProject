@@ -38,6 +38,7 @@
                     android:text="Откуда" />
 
                 <ImageView
+                    android:id="@+id/fragment_search_flights_swap_iv"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginVertical="10dp"
@@ -74,6 +75,8 @@
                     android:text="Куда" />
 
                 <ImageView
+                    android:id="@+id/fragment_search_flights_remove_sec_city_iv"
+
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginVertical="10dp"
@@ -110,9 +113,10 @@
                     android:id="@+id/search_flights_date_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|center_horizontal"
+                    android:layout_marginStart="5dp"
+                    android:layout_gravity="center_vertical|start"
                     android:text="Выберите дату"
-                    android:textAlignment="center" />
+                   />
             </LinearLayout>
 
 
@@ -187,6 +191,8 @@
             android:background="@drawable/rounded_corners"
             android:backgroundTint="@color/dark_blue"
             android:text="Найти билеты"
+            android:fontFamily="@font/roboto_light"
+            android:letterSpacing="0"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="17sp" />
@@ -200,6 +206,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:fontFamily="@font/roboto_light"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/dark_blue"
@@ -210,8 +217,9 @@
             android:textSize="17sp" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/search_flights_rv"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
     </LinearLayout>

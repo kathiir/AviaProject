@@ -73,7 +73,6 @@ public class DialogChooseDateFlight extends DialogFragment {
     }
 
 
-
     private void initViews(View rootView) {
         calendarView = rootView.findViewById(R.id.dialog_choose_date_cosmo_calendar);
         doneChooseBtn = rootView.findViewById(R.id.dialog_choose_date_btn);
