@@ -32,16 +32,15 @@ public class ChangePassFragment extends Fragment {
         return root;
     }
 
-    private void initViews(View view){
+    private void initViews(View view) {
         backButton = view.findViewById(R.id.button_back);
         changePassButton = view.findViewById(R.id.button_change_pass);
     }
 
-    private void setUpListeners(){
+    private void setUpListeners() {
         backButton.setOnClickListener(v -> {
             FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
             transaction.setReorderingAllowed(true);
-
             transaction.replace(R.id.nav_host_fragment, HomeFragment.class, null);
             transaction.commit();
         });

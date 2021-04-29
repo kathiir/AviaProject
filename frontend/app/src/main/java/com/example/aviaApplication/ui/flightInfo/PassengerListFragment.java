@@ -37,21 +37,20 @@ public class PassengerListFragment extends Fragment {
         return root;
     }
 
-    private void initViews(View root){
+    private void initViews(View root) {
         adapter = new PassengerListRecyclerViewAdapter();
         recyclerView = root.findViewById(R.id.flight_passengers_rv);
         recyclerView.setAdapter(adapter);
-
         updateList(new ArrayList<>());
     }
 
-    private void setUpListeners(){
+    private void setUpListeners() {
         requireActivity().getOnBackPressedDispatcher()
                 .addCallback(FragmentChangingUtils.getOnBackPressedCallback(getParentFragmentManager()));
     }
 
-    public void updateList(List<Passenger> passengerList){
-        passengerList.addAll(Arrays.asList(new Passenger(), new Passenger(),new Passenger(),new Passenger()));
+    public void updateList(List<Passenger> passengerList) {
+        passengerList.addAll(Arrays.asList(new Passenger(), new Passenger(), new Passenger(), new Passenger()));
         adapter.submitList(passengerList);
     }
 

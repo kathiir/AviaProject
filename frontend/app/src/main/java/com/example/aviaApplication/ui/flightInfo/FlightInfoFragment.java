@@ -23,9 +23,9 @@ public class FlightInfoFragment extends Fragment {
         return root;
     }
 
-    private void setUpListeners(){
+    private void setUpListeners() {
         requireActivity().getOnBackPressedDispatcher()
-            .addCallback(FragmentChangingUtils.getOnBackPressedCallback(getParentFragmentManager()));
+                .addCallback(FragmentChangingUtils.getOnBackPressedCallback(getParentFragmentManager()));
 
     }
 

@@ -30,16 +30,15 @@ public class ChangeNameFragment extends Fragment {
         return root;
     }
 
-    private void initViews(View root){
+    private void initViews(View root) {
         backButton = root.findViewById(R.id.button_back);
         changeNameButton = root.findViewById(R.id.button_change_name);
     }
 
-    private void setUpListeners(){
+    private void setUpListeners() {
         backButton.setOnClickListener(v -> {
             FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
             transaction.setReorderingAllowed(true);
-
             transaction.replace(R.id.nav_host_fragment, HomeFragment.class, null);
             transaction.commit();
         });
