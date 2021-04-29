@@ -2,6 +2,8 @@
     <string name="not_implemented">Not implemented now</string>
 
     <string name="app_name">AviaApplication</string>
+    <string name="title_main_search">Найти билет</string>
+
     <string name="app_title_load">AVIA\nPROJECT</string>
     <string name="title_home">Личный кабинет</string>
     <string name="title_dashboard">Dashboard</string>

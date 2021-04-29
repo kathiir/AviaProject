@@ -10,14 +10,11 @@ import android.widget.ProgressBar;
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModel;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.aviaApplication.R;
 import com.example.aviaApplication.additions.recyclerView.FlightHistoryRecyclerViewAdapter;
-import com.example.aviaApplication.additions.recyclerView.FlightsRecyclerViewAdapter;
 import com.example.aviaApplication.api.models.Flight;
-import com.example.aviaApplication.ui.home.HomeFragment;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -48,7 +45,7 @@ public class FlightHistoryFragment extends Fragment {
         updateList(new ArrayList<>());
     }
 
-    public void getExibits(){
+    public void getExhibits(){
 
     }
 

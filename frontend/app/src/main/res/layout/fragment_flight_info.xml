@@ -16,19 +16,25 @@
 
         <Button
             android:id="@+id/economy_ticket"
-            style="@style/SwitchTicketTypeButton"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Search" />
+            style="@style/SwitchTicketTypeButton"
+            android:fontFamily="@font/roboto_light"
+            android:text="Search"
+            android:textAllCaps="false"
+            android:textColor="@color/black" />
 
         <Button
             android:id="@+id/business_ticket"
-            style="@style/SwitchTicketTypeButton"
+style="@style/SwitchTicketTypeButton"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Offers" />
+            android:fontFamily="@font/roboto_light"
+            android:text="Offers"
+            android:textColor="@color/black"
+            android:textAllCaps="false" />
     </com.google.android.material.button.MaterialButtonToggleGroup>
 
     <androidx.cardview.widget.CardView
@@ -47,16 +53,34 @@
             android:paddingVertical="@dimen/default_login_padding"
             android:showDividers="middle">
 
-            <TextView
-                android:id="@+id/ticket_cost"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/default_home_margin"
-                android:fontFamily="@font/roboto_light"
-                android:text="Стоимость: 98980"
-                android:textColor="@color/fiord"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/default_home_margin"
+                    android:layout_weight="0.5"
+                    android:fontFamily="@font/roboto_light"
+                    android:text="Стоимость:  "
+                    android:textColor="@color/fiord"
+                    android:textSize="20dp" />
+
+                <TextView
+
+                    android:id="@+id/ticket_cost"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/default_home_margin"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/roboto_light"
+                    android:text=" 98980"
+                    android:textColor="@color/fiord"
+                    android:textSize="20dp" />
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -72,7 +96,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/flight_time_tv"
+                        android:id="@+id/flight_info_departure_time_tv"
                         style="@style/TextViewInSettings"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -81,7 +105,7 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/flight_date_tv"
+                        android:id="@+id/flight_info_departure_date_tv"
                         style="@style/TextViewInSettings"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -98,7 +122,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/dest_city_tv"
+                        android:id="@+id/flight_info_departure_city_tv"
                         style="@style/TextViewInSettings"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -107,7 +131,67 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/dest_airport_tv"
+                        android:id="@+id/flight_info_departure_airport_tv"
+                        style="@style/TextViewInSettings"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Внуково, UUWW"
+                        android:textColor="@color/royal_blue"
+                        android:textSize="15dp" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/default_home_margin"
+                android:orientation="horizontal"
+                android:weightSum="5">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/flight_info_landing_time_tv"
+                        style="@style/TextViewInSettings"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="19:00"
+                        android:textSize="17dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/flight_info_landing_date_tv"
+                        style="@style/TextViewInSettings"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="25 авг, сб"
+                        android:textColor="@color/royal_blue"
+                        android:textSize="15dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/flight_info_landing_city_tv"
+                        style="@style/TextViewInSettings"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Москва, Россия"
+                        android:textSize="17dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/flight_info_landing_airport_tv"
                         style="@style/TextViewInSettings"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -135,8 +219,7 @@
                         android:layout_marginVertical="@dimen/default_home_margin"
                         android:layout_weight="5"
                         android:text="Время в полёте"
-                        android:textSize="17dp"
-                        android:textStyle="bold" />
+                        android:textSize="17dp" />
 
                     <FrameLayout
                         android:layout_width="0dp"
@@ -159,8 +242,7 @@
                         android:layout_weight="3"
                         android:gravity="center"
                         android:text="22:30"
-                        android:textSize="17dp"
-                        android:textStyle="bold" />
+                        android:textSize="17dp" />
 
 
                 </LinearLayout>
@@ -177,8 +259,7 @@
                         android:layout_weight="6"
                         android:gravity="center_vertical"
                         android:text="Учитывать часовой пояс"
-                        android:textSize="17dp"
-                        android:textStyle="bold" />
+                        android:textSize="17dp" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -222,15 +303,15 @@
 
             <CheckBox
                 android:id="@+id/set_favorite"
+                style="@style/FavoriteCheckbox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:scaleX="0.75"
-                android:scaleY="0.75"
+                android:button="@drawable/toggle_favorite_button"
                 android:clickable="true"
                 android:focusable="true"
-                android:button="@drawable/toggle_favorite_button"
-                style="@style/FavoriteCheckbox"/>
+                android:scaleX="0.75"
+                android:scaleY="0.75" />
         </FrameLayout>
     </LinearLayout>
 

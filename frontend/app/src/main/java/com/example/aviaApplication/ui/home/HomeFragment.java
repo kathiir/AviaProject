@@ -1,5 +1,6 @@
 package com.example.aviaApplication.ui.home;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -10,6 +11,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
@@ -25,20 +27,12 @@ import com.example.aviaApplication.utils.FragmentChangingUtils;
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
-    private Button changePassButton;
-    private Button changeNameButton;
-
-    private Button paymentHistory;
-
-    private Button telegramConfirmDialogButton;
-    private Button telegramInitDialogButton;
+    private Button changePassButton, changeNameButton, paymentHistory, telegramConfirmDialogButton;
     private View telegramConfirmDialogLayout;
+    private Button telegramInitDialogButton, temp, temp1;
+    private Handler timerHandler;
 
-    private Button temp;
-    private Button temp1;
-
-    Handler timerHandler;
-
+    @RequiresApi(api = Build.VERSION_CODES.P)
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel =
@@ -49,16 +43,14 @@ public class HomeFragment extends Fragment {
         return root;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.P)
     private void initViews(View root) {
         paymentHistory = root.findViewById(R.id.button_payment_history);
-
         changePassButton = root.findViewById(R.id.button_change_pass);
         changeNameButton = root.findViewById(R.id.button_change_name);
-
         telegramInitDialogButton = root.findViewById(R.id.button_teleg_notifications);
         telegramConfirmDialogButton = root.findViewById(R.id.button_get_teleg_link);
         telegramConfirmDialogLayout = root.findViewById(R.id.teleg_confirmation_layout);
-
         timerHandler = Handler.createAsync(Looper.getMainLooper());
         temp = root.findViewById(R.id.temp);
         temp1 = root.findViewById(R.id.temp1);
@@ -84,7 +76,6 @@ public class HomeFragment extends Fragment {
         telegramInitDialogButton.setOnClickListener(v -> {
             telegramInitDialogButton.setVisibility(View.GONE);
             telegramConfirmDialogLayout.setVisibility(View.VISIBLE);
-
             timerHandler.postDelayed(timerRunnable, 10000);
         });
 

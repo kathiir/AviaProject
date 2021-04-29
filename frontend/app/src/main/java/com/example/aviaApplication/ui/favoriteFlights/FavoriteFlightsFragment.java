@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
@@ -12,7 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.aviaApplication.R;
-import com.example.aviaApplication.additions.recyclerView.FlightsRecyclerViewAdapter;
+import com.example.aviaApplication.additions.recyclerView.FavoriteFlightsRecyclerViewAdapter;
 import com.example.aviaApplication.api.models.Flight;
 
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ public class FavoriteFlightsFragment extends Fragment {
     private RecyclerView recyclerView;
     public ProgressBar progressBar;
     private Integer idUser;
-    private FlightsRecyclerViewAdapter mAdapter;
+    private FavoriteFlightsRecyclerViewAdapter mAdapter;
     private LinearLayout emptyFavoriteListLL;
 
     @Nullable
@@ -38,7 +39,7 @@ public class FavoriteFlightsFragment extends Fragment {
     private void initViews(View view) {
         emptyFavoriteListLL = view.findViewById(R.id.favorite_flights_ll);
         progressBar = view.findViewById(R.id.favorite_flights_pb);
-        mAdapter = new FlightsRecyclerViewAdapter();
+        mAdapter = new FavoriteFlightsRecyclerViewAdapter();
         recyclerView = view.findViewById(R.id.favorite_flights_rv);
         recyclerView.setAdapter(mAdapter);
         updateList(new ArrayList<>());
