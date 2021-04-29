@@ -15,4 +15,13 @@
     <color name="light_gray">#D7D7D7</color>
     <color name="light_light_gray">#40D7D7D7</color>
     <color name="dark_gray">#717171</color>
+
+    <color name="jordy_blue">#92AFF8</color>
+    <color name="fiord">#414861</color>
+    <color name="cornflower_blue">#4A8CF0</color>
+    <color name="sail">#a9c0f9</color>
+    <color name="gray">#828282</color>
+    <color name="royal_blue">#4A51F0</color>
+    <color name="salomie">#FFDC83</color>
+
 </resources>
