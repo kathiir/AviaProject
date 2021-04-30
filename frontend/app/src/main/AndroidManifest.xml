@@ -10,7 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AviaApplication">
 
-        <activity android:name=".SplashScreenActivity">
+        <activity android:name=".SplashScreenActivity"
+            android:theme="@style/SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

@@ -12,13 +12,17 @@
         android:layout_margin="@dimen/default_home_margin"
         android:checkedButton="@+id/economy_ticket"
         app:checkedButton="@id/economy_ticket"
-        app:singleSelection="true">
+        app:singleSelection="true"
+        app:selectionRequired="true"
+        android:weightSum="2">
 
         <Button
             android:id="@+id/economy_ticket"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:layout_margin="0dp"
+            android:padding="0dp"
             style="@style/SwitchTicketTypeButton"
             android:fontFamily="@font/roboto_light"
             android:text="Search"
@@ -27,8 +31,10 @@
 
         <Button
             android:id="@+id/business_ticket"
-style="@style/SwitchTicketTypeButton"
+            style="@style/SwitchTicketTypeButton"
             android:layout_width="0dp"
+            android:layout_margin="0dp"
+            android:padding="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:fontFamily="@font/roboto_light"
