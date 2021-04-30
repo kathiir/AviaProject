@@ -16,31 +16,19 @@
         app:selectionRequired="true"
         android:weightSum="2">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/economy_ticket"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_margin="0dp"
-            android:padding="0dp"
             style="@style/SwitchTicketTypeButton"
-            android:fontFamily="@font/roboto_light"
-            android:text="Search"
+            android:text="@string/text_economy_class_switch"
             android:textAllCaps="false"
-            android:textColor="@color/black" />
+            />
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/business_ticket"
             style="@style/SwitchTicketTypeButton"
-            android:layout_width="0dp"
-            android:layout_margin="0dp"
-            android:padding="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:fontFamily="@font/roboto_light"
-            android:text="Offers"
-            android:textColor="@color/black"
-            android:textAllCaps="false" />
+            android:text="@string/text_business_class_switch"
+            android:textAllCaps="false"
+            />
     </com.google.android.material.button.MaterialButtonToggleGroup>
 
     <androidx.cardview.widget.CardView

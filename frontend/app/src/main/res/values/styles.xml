@@ -69,28 +69,28 @@
     </style>
 
     <style name="SwitchTicketTypeButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">match_parent</item>
         <item name="android:layout_width">0dp</item>
-        <item name="materialThemeOverlay">@style/overlay</item>
+        <item name="android:layout_weight">1</item>
+        <item name="materialThemeOverlay">@style/SwitchButtonOverlay</item>
         <item name="backgroundTint">@drawable/toggle_widget_back_color</item>
         <item name="cornerRadius">@dimen/default_corner_radius</item>
+        <item name="fontFamily">@font/roboto_light</item>
         <item name="android:textColor">@drawable/toggle_widget_text_color</item>
-        <item name="strokeColor">@color/royal_blue</item>
+        <item name="strokeColor">@drawable/toggle_widget_stroke_color</item>
         <item name="strokeWidth">4dp</item>
     </style>
 
     <style name="FavoriteCheckbox" parent="Widget.AppCompat.CompoundButton.CheckBox">
-        <item name="materialThemeOverlay">@style/ov</item>
+        <item name="materialThemeOverlay">@style/CheckBoxOverlay</item>
     </style>
 
-
-    <style name="ov">
+    <style name="CheckBoxOverlay">
         <item name="colorSecondary">@color/salomie</item>
         <item name="colorOnSurface">@color/fiord</item>
     </style>
 
-    <style name="overlay">
+    <style name="SwitchButtonOverlay">
         <item name="colorPrimary">@color/royal_blue</item>
     </style>
 

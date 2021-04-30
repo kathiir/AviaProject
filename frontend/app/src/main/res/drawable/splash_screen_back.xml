@@ -10,7 +10,6 @@
     </item>
 
     <item android:gravity="center"
-
         android:width="155dp"
         android:height="155dp"
         android:drawable="@drawable/ic_enter_logo"/>

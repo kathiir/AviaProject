@@ -182,13 +182,13 @@
 
         </LinearLayout>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/search_flights_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="80dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/rounded_corners"
+            app:cornerRadius="@dimen/default_corner_radius"
             android:backgroundTint="@color/dark_blue"
             android:text="Найти билеты"
             android:fontFamily="@font/roboto_light"

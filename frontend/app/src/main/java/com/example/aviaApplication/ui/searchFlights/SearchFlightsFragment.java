@@ -23,6 +23,7 @@ import com.example.aviaApplication.api.models.City;
 import com.example.aviaApplication.api.models.Flight;
 import com.example.aviaApplication.ui.cities.FragmentCitiesSearch;
 import com.example.aviaApplication.ui.foundFlights.FoundFlights;
+import com.example.aviaApplication.utils.FragmentChangingUtils;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -145,6 +146,10 @@ public class SearchFlightsFragment extends Fragment {
             setCityFrom(toCity);
             setCityTo(fromCityCopy);
         });
+
+        requireActivity()
+                .getOnBackPressedDispatcher()
+                .addCallback(FragmentChangingUtils.getOnBackPressedCallback(getParentFragmentManager()));
     }
 
     public void updateList(List<Flight> list) {

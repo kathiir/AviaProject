@@ -27,7 +27,7 @@ import com.example.aviaApplication.utils.FragmentChangingUtils;
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
-    private Button changePassButton, changeNameButton, paymentHistory, telegramConfirmDialogButton;
+    private Button paymentHistory, telegramConfirmDialogButton;
     private View telegramConfirmDialogLayout;
     private Button telegramInitDialogButton, temp, temp1;
     private Handler timerHandler;
@@ -46,8 +46,6 @@ public class HomeFragment extends Fragment {
     @RequiresApi(api = Build.VERSION_CODES.P)
     private void initViews(View root) {
         paymentHistory = root.findViewById(R.id.button_payment_history);
-        changePassButton = root.findViewById(R.id.button_change_pass);
-        changeNameButton = root.findViewById(R.id.button_change_name);
         telegramInitDialogButton = root.findViewById(R.id.button_teleg_notifications);
         telegramConfirmDialogButton = root.findViewById(R.id.button_get_teleg_link);
         telegramConfirmDialogLayout = root.findViewById(R.id.teleg_confirmation_layout);
@@ -60,17 +58,6 @@ public class HomeFragment extends Fragment {
         paymentHistory.setOnClickListener(v -> {
             FragmentChangingUtils.goToFragment(getParentFragmentManager(),
                     R.id.nav_host_fragment, FlightHistoryFragment.class);
-        });
-
-        changePassButton.setOnClickListener(v -> {
-            FragmentChangingUtils.goToFragment(getParentFragmentManager(),
-                    R.id.nav_host_fragment, ChangePassFragment.class);
-        });
-
-
-        changeNameButton.setOnClickListener(v -> {
-            FragmentChangingUtils.goToFragment(getParentFragmentManager(),
-                    R.id.nav_host_fragment, ChangeNameFragment.class);
         });
 
         telegramInitDialogButton.setOnClickListener(v -> {
