@@ -8,8 +8,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.aviaApplication.R;
@@ -43,6 +46,14 @@ public class FavoriteFlightsFragment extends Fragment {
         recyclerView = view.findViewById(R.id.favorite_flights_rv);
         recyclerView.setAdapter(mAdapter);
         updateList(new ArrayList<>());
+
+        requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+                navController.navigate(R.id.navigation_main_search);
+            }
+        });
     }
 
     public void getExhibits() {

@@ -7,16 +7,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
-import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.aviaApplication.R;
-import com.example.aviaApplication.ui.flightHistory.FlightHistoryFragment;
 import com.example.aviaApplication.ui.home.HomeFragment;
-import com.example.aviaApplication.utils.FragmentChangingUtils;
+import com.example.aviaApplication.utils.CommonUtils;
 
 public class ChangePassFragment extends Fragment {
 
@@ -52,7 +50,7 @@ public class ChangePassFragment extends Fragment {
         });
 
         requireActivity().getOnBackPressedDispatcher()
-                .addCallback(FragmentChangingUtils.getOnBackPressedCallback(getParentFragmentManager()));
+                .addCallback(CommonUtils.getOnBackPressedCallback(getParentFragmentManager()));
 
     }
 }

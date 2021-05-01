@@ -10,15 +10,19 @@ import android.widget.ProgressBar;
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.aviaApplication.R;
 import com.example.aviaApplication.additions.recyclerView.FlightHistoryRecyclerViewAdapter;
 import com.example.aviaApplication.api.models.Flight;
+import com.example.aviaApplication.api.models.User;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Observable;
 
 public class FlightHistoryFragment extends Fragment {
     public ProgressBar progressBar;
@@ -31,6 +35,7 @@ public class FlightHistoryFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_history_flights, container, false);
+        flightHistoryViewModel = new ViewModelProvider(this).get(FlightHistoryViewModel.class);
         initViews(view);
         setUpListeners();
         return view;
@@ -42,15 +47,11 @@ public class FlightHistoryFragment extends Fragment {
         flightHistoryRecyclerViewAdapter =  new FlightHistoryRecyclerViewAdapter();
         recyclerView = view.findViewById(R.id.flight_history_rv);
         recyclerView.setAdapter(flightHistoryRecyclerViewAdapter);
-        updateList(new ArrayList<>());
-    }
 
-    public void getExhibits(){
-
+        flightHistoryViewModel.getFlights().observe(getViewLifecycleOwner(), this::updateList);
     }
 
     public void updateList(List<Flight> list){
-        list.addAll(Arrays.asList(new Flight(), new Flight(), new Flight(), new Flight(), new Flight(), new Flight(), new Flight(), new Flight()));
         if (list.isEmpty()){
             emptyHistoryLayout.setVisibility(View.VISIBLE);
         }else {

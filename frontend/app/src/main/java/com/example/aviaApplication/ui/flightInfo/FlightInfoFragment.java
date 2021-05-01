@@ -5,13 +5,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.aviaApplication.R;
-import com.example.aviaApplication.utils.FragmentChangingUtils;
+import com.example.aviaApplication.utils.CommonUtils;
 
 public class FlightInfoFragment extends Fragment {
 
@@ -25,7 +24,7 @@ public class FlightInfoFragment extends Fragment {
 
     private void setUpListeners() {
         requireActivity().getOnBackPressedDispatcher()
-                .addCallback(FragmentChangingUtils.getOnBackPressedCallback(getParentFragmentManager()));
+                .addCallback(CommonUtils.getOnBackPressedCallback(getParentFragmentManager()));
 
     }
 

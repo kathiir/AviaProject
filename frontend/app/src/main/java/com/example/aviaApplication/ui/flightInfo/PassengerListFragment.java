@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,11 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.aviaApplication.R;
 import com.example.aviaApplication.additions.recyclerView.PassengerListRecyclerViewAdapter;
-import com.example.aviaApplication.api.models.Flight;
 import com.example.aviaApplication.api.models.Passenger;
-import com.example.aviaApplication.utils.FragmentChangingUtils;
+import com.example.aviaApplication.utils.CommonUtils;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -46,7 +43,7 @@ public class PassengerListFragment extends Fragment {
 
     private void setUpListeners() {
         requireActivity().getOnBackPressedDispatcher()
-                .addCallback(FragmentChangingUtils.getOnBackPressedCallback(getParentFragmentManager()));
+                .addCallback(CommonUtils.getOnBackPressedCallback(getParentFragmentManager()));
     }
 
     public void updateList(List<Passenger> passengerList) {

@@ -11,10 +11,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.aviaApplication.R;
@@ -23,7 +26,7 @@ import com.example.aviaApplication.api.models.City;
 import com.example.aviaApplication.api.models.Flight;
 import com.example.aviaApplication.ui.cities.FragmentCitiesSearch;
 import com.example.aviaApplication.ui.foundFlights.FoundFlights;
-import com.example.aviaApplication.utils.FragmentChangingUtils;
+import com.example.aviaApplication.utils.CommonUtils;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -147,9 +150,14 @@ public class SearchFlightsFragment extends Fragment {
             setCityTo(fromCityCopy);
         });
 
-        requireActivity()
-                .getOnBackPressedDispatcher()
-                .addCallback(FragmentChangingUtils.getOnBackPressedCallback(getParentFragmentManager()));
+
+        requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
+                navController.navigate(R.id.navigation_main_search);
+            }
+        });
     }
 
     public void updateList(List<Flight> list) {

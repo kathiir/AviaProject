@@ -12,7 +12,6 @@ import com.example.aviaApplication.utils.timer.SplashTimerTask;
 import java.util.Timer;
 
 public class SplashScreenActivity extends AppCompatActivity {
-    private HandlerSplashScreen messageHandler;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

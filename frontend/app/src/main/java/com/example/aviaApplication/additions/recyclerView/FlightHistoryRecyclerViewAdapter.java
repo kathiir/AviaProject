@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.res.ResourcesCompat;
@@ -40,7 +41,15 @@ public class FlightHistoryRecyclerViewAdapter extends RecyclerView.Adapter<Fligh
 
     @Override
     public void onBindViewHolder(@NonNull FlightHistoryViewHolder holder, int position) {
+        TextView destinationTV = holder.itemView.findViewById(R.id.from_to_tv);
+        TextView dateTV = holder.itemView.findViewById(R.id.date_tv);
+        TextView priceTV = holder.itemView.findViewById(R.id.price_tv);
 
+        Flight flight = differ.getCurrentList().get(position);
+
+        destinationTV.setText(flight.getSrc() + "-" + flight.getDest());
+        dateTV.setText(flight.getDate());
+        priceTV.setText(flight.getPrice().toString());
     }
 
     private AsyncListDiffer<Flight> differ = new AsyncListDiffer<>(this, DIFF_CALLBACK);
