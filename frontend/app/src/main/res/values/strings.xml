@@ -55,7 +55,7 @@
     <string name="hint_pass_data_tv">Паспортные данные</string>
 
 <!--  shared preferenses keys  -->
-    <string name="key_current_user_name">com.example.aviaApplication.key_current_user_name</string>
+    <string name="key_current_user_name">tp.project.aviaApplication.key_current_user_name</string>
 
 
 <!--  client_api  -->
