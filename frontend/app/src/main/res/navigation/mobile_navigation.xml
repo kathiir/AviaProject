@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.aviaApplication.ui.home.HomeFragment"
+        android:name="tp.project.aviaApplication.ui.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home"/>
 
     <fragment
         android:id="@+id/navigation_main_search"
-        android:name="com.example.aviaApplication.ui.searchFlights.SearchFlightsFragment"
+        android:name="tp.project.aviaApplication.ui.searchFlights.SearchFlightsFragment"
         android:label="@string/title_main_search"
         tools:layout="@layout/fragment_search_flights"/>
 
     <fragment
         android:id="@+id/navigation_favorite"
-        android:name="com.example.aviaApplication.ui.favoriteFlights.FavoriteFlightsFragment"
+        android:name="tp.project.aviaApplication.ui.favoriteFlights.FavoriteFlightsFragment"
         android:label="@string/title_favorite"
         tools:layout="@layout/fragment_favorite_flights"/>
 </navigation>

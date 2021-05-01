@@ -57,4 +57,8 @@
 <!--  shared preferenses keys  -->
     <string name="key_current_user_name">com.example.aviaApplication.key_current_user_name</string>
 
+
+<!--  client_api  -->
+    <string name="server_client_id">717640529342-iogu8s5c8qd597ee7eh46cvb5u8gc1td.apps.googleusercontent.com</string>
+
 </resources>
