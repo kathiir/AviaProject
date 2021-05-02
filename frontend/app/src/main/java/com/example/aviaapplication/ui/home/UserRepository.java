@@ -11,8 +11,9 @@ public class UserRepository {
         return userRepository;
     }
 
-    public User loginUser(){
-        return new User("Implement repository first");
+
+    public User loginUser(String name){
+        return new User(name);
     }
 
 }

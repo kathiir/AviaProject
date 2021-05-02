@@ -1,9 +1,11 @@
 package com.example.aviaapplication.ui.home;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,13 +21,22 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
-import com.example.aviaapplication.Aaaa;
 import com.example.aviaapplication.R;
 import com.example.aviaapplication.ui.flightHistory.FlightHistoryFragment;
 import com.example.aviaapplication.ui.flightInfo.FlightInfoFragment;
+import com.example.aviaapplication.ui.flightInfo.PassengerListFragment;
 import com.example.aviaapplication.utils.CommonUtils;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.Task;
 
 public class HomeFragment extends Fragment {
+
+    private static final int RC_GET_TOKEN = 9002;
+    private static final String TAG = "homeFragment";
 
     private HomeViewModel homeViewModel;
     private Button loginButton, logoutButton, paymentHistory, telegramConfirmDialogButton;
@@ -34,11 +45,12 @@ public class HomeFragment extends Fragment {
     private Button telegramInitDialogButton, temp, temp1;
     private Handler timerHandler;
 
+    private GoogleSignInClient mGoogleSignInClient;
+
     @RequiresApi(api = Build.VERSION_CODES.P)
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
+        homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
 
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         initViews(root);
@@ -59,19 +71,34 @@ public class HomeFragment extends Fragment {
         temp = root.findViewById(R.id.temp);  //remove before production
         temp1 = root.findViewById(R.id.temp1);
 
-//        if (account != null){
+
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getContext());
+
+
+        if (account != null){
+            homeViewModel.login(account);
+            usernameTextView.setText(account.getDisplayName());
+            logoutButton.setVisibility(View.VISIBLE);
+            loginButton.setVisibility(View.GONE);
+        }
+
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestServerAuthCode(getString(R.string.server_client_id))
+                .requestEmail()
+                .requestProfile()
+                .requestId()
+                .build();
+
+
+        mGoogleSignInClient = GoogleSignIn.getClient(getParentFragment().getActivity(), gso);
+
+
+        //
+//        if (homeViewModel.isAuthorised()) {
 //            usernameTextView.setText(homeViewModel.getUserName());
 //            logoutButton.setVisibility(View.VISIBLE);
 //            loginButton.setVisibility(View.GONE);
 //        }
-
-
-        //
-        if (homeViewModel.isAuthorised()) {
-            usernameTextView.setText(homeViewModel.getUserName());
-            logoutButton.setVisibility(View.VISIBLE);
-            loginButton.setVisibility(View.GONE);
-        }
 
 
 
@@ -98,10 +125,12 @@ public class HomeFragment extends Fragment {
         });
 
         loginButton.setOnClickListener(v -> {
-            homeViewModel.login();
+            Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+            startActivityForResult(signInIntent, RC_GET_TOKEN);
         });
 
         logoutButton.setOnClickListener(v -> {
+            mGoogleSignInClient.signOut();
             homeViewModel.logout();
         });
 
@@ -132,7 +161,7 @@ public class HomeFragment extends Fragment {
 
         temp1.setOnClickListener(v -> {
             CommonUtils.goToFragment(getParentFragmentManager(),
-                    R.id.nav_host_fragment, Aaaa.class);
+                    R.id.nav_host_fragment, PassengerListFragment.class);
         });
 
     }
@@ -144,6 +173,35 @@ public class HomeFragment extends Fragment {
             telegramInitDialogButton.setVisibility(View.VISIBLE);
         }
     };
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == RC_GET_TOKEN) {
+            // [START get_id_token]
+            // This task is always completed immediately, there is no need to attach an
+            // asynchronous listener.
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            handleSignInResult(task);
+            // [END get_id_token]
+        }
+    }
+
+    private void handleSignInResult(@NonNull Task<GoogleSignInAccount> completedTask) {
+        try {
+            GoogleSignInAccount account = completedTask.getResult(ApiException.class);
+
+            // TODO(developer): send ID Token to server and validate
+            usernameTextView.setText(account.getDisplayName());
+            Toast.makeText(getContext(), "token: " + account.getId(), Toast.LENGTH_LONG).show();
+            homeViewModel.login(account);
+        } catch (ApiException e) {
+            Toast.makeText(getContext(), "NO", Toast.LENGTH_LONG).show();
+            usernameTextView.setText(R.string.title_user_name);
+            Log.w(TAG, "handleSignInResult:error", e);
+        }
+    }
 
     @Override
     public void onPause() {

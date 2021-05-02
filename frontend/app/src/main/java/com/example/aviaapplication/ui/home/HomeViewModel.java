@@ -11,11 +11,13 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.aviaapplication.R;
 import com.example.aviaapplication.api.models.User;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 
 public class HomeViewModel extends AndroidViewModel {
     private UserRepository userRepository;
     private MutableLiveData<User> currentUser;
     private SharedPreferences preferences;
+    private GoogleSignInAccount account;
 
     public HomeViewModel(@NonNull Application application) {
         super(application);
@@ -31,8 +33,9 @@ public class HomeViewModel extends AndroidViewModel {
         return currentUser;
     }
 
-    public void login(){
-        currentUser.setValue(userRepository.loginUser());
+    public void login(GoogleSignInAccount account){
+        this.account = account;
+        currentUser.setValue(userRepository.loginUser(account.getDisplayName()));
         preferences.edit().putString(getApplication().getResources().getString(R.string.key_current_user_name),
                 currentUser.getValue().getName()).apply();
     }
@@ -43,7 +46,9 @@ public class HomeViewModel extends AndroidViewModel {
     }
 
     public String getUserName(){
-        return preferences.getString(getApplication().getResources().getString(R.string.key_current_user_name), "");
+        if (account != null)
+            return account.getDisplayName();
+        return "";
     }
 
     public boolean isAuthorised(){
