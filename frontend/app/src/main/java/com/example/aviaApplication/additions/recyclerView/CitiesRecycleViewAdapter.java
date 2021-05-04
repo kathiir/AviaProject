@@ -1,16 +1,15 @@
 package com.example.aviaApplication.additions.recyclerView;
 
 import android.annotation.SuppressLint;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.AsyncListDiffer;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,11 +17,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.aviaApplication.R;
 import com.example.aviaApplication.api.models.City;
 import com.example.aviaApplication.ui.cities.FragmentCitiesSearch;
-import com.example.aviaApplication.ui.searchFlights.SearchFlightsFragment;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class CitiesRecycleViewAdapter extends RecyclerView.Adapter<CitiesRecycleViewAdapter.CitiesViewHolder> {
+public class CitiesRecycleViewAdapter extends RecyclerView.Adapter<CitiesRecycleViewAdapter.CitiesViewHolder> implements Filterable {
+
 
     public static class CitiesViewHolder extends RecyclerView.ViewHolder {
         private TextView nameCityTv;
@@ -32,6 +32,39 @@ public class CitiesRecycleViewAdapter extends RecyclerView.Adapter<CitiesRecycle
             nameCityTv = view.findViewById(R.id.element_of_list_cities_name_tv);
         }
     }
+
+    private List<City> filteredCities;
+    private List<City> basList = new ArrayList<>();
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+                String charString = constraint.toString();
+                if (charString.isEmpty()) {
+                    filteredCities = basList;
+                } else {
+                    List<City> filteredList = new ArrayList<>();
+                    for (City movie : basList) {
+                        if (movie.getCityName().toLowerCase().contains(charString.toLowerCase())) {
+                            filteredList.add(movie);
+                        }
+                    }
+                    filteredCities = filteredList;
+                }
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = filteredCities;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence constraint, FilterResults results) {
+                differ.submitList((ArrayList<City>) results.values);
+            }
+        };
+    }
+
 
     private FragmentCitiesSearch fragmentCitiesSearch;
 
@@ -73,6 +106,7 @@ public class CitiesRecycleViewAdapter extends RecyclerView.Adapter<CitiesRecycle
 
 
     public void submitList(List<City> cityList) {
+        basList = cityList;
         differ.submitList(cityList);
     }
 
