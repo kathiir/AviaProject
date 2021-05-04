@@ -129,7 +129,11 @@ public class SearchFlightsFragment extends Fragment {
                     .addToBackStack(SearchFlightsFragment.class.toString())
                     .commit();
         });
-        chooseDateFlights.setOnClickListener(v -> dialogChooseDateFlight.show(getChildFragmentManager(), ""));
+        chooseDateFlights.setOnClickListener(v -> {
+            if (!dialogChooseDateFlight.isVisible()) {
+                dialogChooseDateFlight.show(getChildFragmentManager(), "");
+            }
+        });
         searchFlightBtn.setOnClickListener(v -> {
             Fragment f = new FoundFlights();
             getParentFragmentManager().beginTransaction()
@@ -181,7 +185,7 @@ public class SearchFlightsFragment extends Fragment {
         this.startDate = startDate;
         this.lastDate = lastDate;
         SimpleDateFormat format = new SimpleDateFormat("d MMMM ");
-        if (startDate.equals(lastDate)) {
+        if (startDate != null && lastDate != null && startDate.equals(lastDate)) {
             dateTV.setText(format.format(startDate.getTime()));
         } else {
             dateTV.setText(format.format(startDate.getTime()) + "  \n" + format.format(lastDate.getTime()));
