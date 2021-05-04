@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 
 import androidx.annotation.Nullable;
 
@@ -27,6 +28,7 @@ public class FragmentCitiesSearch extends Fragment {
     private CitiesRecycleViewAdapter recycleViewAdapterRecentCities;
     private CitiesRecycleViewAdapter recycleViewAdapterAllCities;
     Integer containerId;
+    SearchView simpleSearchView;
 
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_cities, container, false);
@@ -50,9 +52,25 @@ public class FragmentCitiesSearch extends Fragment {
     }
 
     private void setListeners() {
+
+        simpleSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                recycleViewAdapterAllCities.getFilter().filter(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                recycleViewAdapterAllCities.getFilter().filter(newText);
+                return false;
+            }
+        });
     }
 
     private void initViews(View view) {
+        simpleSearchView = view.findViewById(R.id.fragment_cities_search_city_sv);
+
         recycleViewAdapterRecentCities = new CitiesRecycleViewAdapter(this);
         recycleViewAdapterAllCities = new CitiesRecycleViewAdapter(this);
         recyclerViewRecentCities = view.findViewById(R.id.fragment_cities_recent_cities_rv);
@@ -68,8 +86,8 @@ public class FragmentCitiesSearch extends Fragment {
 
     public void updateList(List<City> list) {
         list.addAll(Arrays.asList(new City(), new City(), new City(""), new City(), new City(), new City(), new City(), new City()));
-        recycleViewAdapterRecentCities.submitList(list);
-        recycleViewAdapterAllCities.submitList(Arrays.asList(new City(), new City(), new City()));
+        recycleViewAdapterAllCities.submitList(list);
+        recycleViewAdapterRecentCities.submitList(Arrays.asList(new City(), new City(), new City()));
 
     }
 }
