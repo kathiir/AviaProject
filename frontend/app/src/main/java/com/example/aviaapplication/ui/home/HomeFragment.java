@@ -83,8 +83,9 @@ public class HomeFragment extends Fragment {
         }
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestServerAuthCode(getString(R.string.server_client_id))
+                //.requestServerAuthCode(getString(R.string.server_client_id))
                 .requestEmail()
+                .requestIdToken(getString(R.string.server_client_id))
                 .requestProfile()
                 .requestId()
                 .build();
@@ -194,7 +195,7 @@ public class HomeFragment extends Fragment {
 
             // TODO(developer): send ID Token to server and validate
             usernameTextView.setText(account.getDisplayName());
-            Toast.makeText(getContext(), "token: " + account.getId(), Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), "token: " + account.getIdToken(), Toast.LENGTH_LONG).show();
             homeViewModel.login(account);
         } catch (ApiException e) {
             Toast.makeText(getContext(), "NO", Toast.LENGTH_LONG).show();
