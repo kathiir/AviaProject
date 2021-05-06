@@ -87,7 +87,7 @@ public class SearchFlightsFragment extends Fragment {
         dialogChooseDateFlight = new DialogChooseDateFlight();
         dialogChooseDateFlight.setStyle(DialogFragment.STYLE_NO_FRAME, 0);
         recyclerView = rootView.findViewById(R.id.search_flights_rv);
-        recentFlightsViewAdapter = new RecentFlightsViewAdapter();
+        recentFlightsViewAdapter = new RecentFlightsViewAdapter(this);
         recyclerView.setAdapter(recentFlightsViewAdapter);
         updateList(new ArrayList<>());
     }
