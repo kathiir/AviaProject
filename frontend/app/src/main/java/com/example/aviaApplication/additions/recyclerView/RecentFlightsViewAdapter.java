@@ -13,28 +13,37 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.aviaApplication.R;
 import com.example.aviaApplication.api.models.Flight;
+import com.example.aviaApplication.ui.flightInfo.FlightInfoFragment;
+import com.example.aviaApplication.ui.foundFlights.FoundFlights;
+import com.example.aviaApplication.ui.searchFlights.SearchFlightsFragment;
+import com.example.aviaApplication.utils.FragmentChangingUtils;
 
 import java.util.List;
 
-public class RecentFlightsViewAdapter extends RecyclerView.Adapter<FavoriteFlightsRecyclerViewAdapter.FavoriteFlightsViewHolder> {
+public class RecentFlightsViewAdapter extends RecyclerView.Adapter<RecentFlightsViewAdapter.FlightsViewHolder> {
     public static class FlightsViewHolder extends RecyclerView.ViewHolder {
-
         public FlightsViewHolder(View view) {
             super(view);
         }
     }
+    private SearchFlightsFragment fragment;
+
+    public RecentFlightsViewAdapter(SearchFlightsFragment fragment) {
+        this.fragment = fragment;
+    }
 
     @NonNull
     @Override
-    public FavoriteFlightsRecyclerViewAdapter.FavoriteFlightsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RecentFlightsViewAdapter.FlightsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LinearLayout v = (LinearLayout) LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.element_recent_flights, parent, false);
-        return new FavoriteFlightsRecyclerViewAdapter.FavoriteFlightsViewHolder(v);
+        return new RecentFlightsViewAdapter.FlightsViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull FavoriteFlightsRecyclerViewAdapter.FavoriteFlightsViewHolder holder, int position) {
-
+    public void onBindViewHolder(@NonNull RecentFlightsViewAdapter.FlightsViewHolder holder, int position) {
+        holder.itemView.setOnClickListener(v -> FragmentChangingUtils.goToFragment(fragment.getParentFragmentManager(),
+                R.id.nav_host_fragment, FlightInfoFragment.class));
     }
 
     private AsyncListDiffer<Flight> differ = new AsyncListDiffer<>(this, DIFF_CALLBACK);

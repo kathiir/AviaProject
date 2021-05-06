@@ -185,10 +185,12 @@ public class SearchFlightsFragment extends Fragment {
         this.startDate = startDate;
         this.lastDate = lastDate;
         SimpleDateFormat format = new SimpleDateFormat("d MMMM ");
-        if (startDate != null && lastDate != null && startDate.equals(lastDate)) {
-            dateTV.setText(format.format(startDate.getTime()));
-        } else {
-            dateTV.setText(format.format(startDate.getTime()) + "  \n" + format.format(lastDate.getTime()));
+        if(startDate != null && lastDate != null){
+            if (  startDate.equals(lastDate)) {
+                dateTV.setText(format.format(startDate.getTime()));
+            } else {
+                dateTV.setText(format.format(startDate.getTime()) + "  \n" + format.format(lastDate.getTime()));
+            }
         }
     }
 }

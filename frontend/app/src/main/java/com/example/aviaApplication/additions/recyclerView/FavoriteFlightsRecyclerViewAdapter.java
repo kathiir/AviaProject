@@ -13,6 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.aviaApplication.R;
 import com.example.aviaApplication.api.models.Flight;
+import com.example.aviaApplication.ui.favoriteFlights.FavoriteFlightsFragment;
+import com.example.aviaApplication.ui.flightInfo.FlightInfoFragment;
+import com.example.aviaApplication.ui.foundFlights.FoundFlights;
+import com.example.aviaApplication.utils.FragmentChangingUtils;
 
 import java.util.List;
 
@@ -21,6 +25,12 @@ public class FavoriteFlightsRecyclerViewAdapter extends RecyclerView.Adapter<Fav
         public FavoriteFlightsViewHolder(View view) {
             super(view);
         }
+    }
+
+    private FavoriteFlightsFragment fragment;
+
+    public FavoriteFlightsRecyclerViewAdapter(FavoriteFlightsFragment fragment) {
+        this.fragment = fragment;
     }
 
     @NonNull
@@ -33,6 +43,8 @@ public class FavoriteFlightsRecyclerViewAdapter extends RecyclerView.Adapter<Fav
 
     @Override
     public void onBindViewHolder(@NonNull FavoriteFlightsViewHolder holder, int position) {
+        holder.itemView.setOnClickListener(v -> FragmentChangingUtils.goToFragment(fragment.getParentFragmentManager(),
+                R.id.nav_host_fragment, FlightInfoFragment.class));
 
     }
 

@@ -23,7 +23,7 @@ public class FoundFlights extends Fragment {
     private FlightsRecycleViewAdapter flightsRecycleViewAdapter;
     private TextView emptyList;
     private RecyclerView recyclerView;
-
+public int containerId ;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -35,7 +35,7 @@ public class FoundFlights extends Fragment {
     private void initViews(View view) {
         recyclerView = view.findViewById(R.id.found_flights_rv);
         emptyList = view.findViewById(R.id.found_flights_tv);
-        flightsRecycleViewAdapter = new FlightsRecycleViewAdapter();
+        flightsRecycleViewAdapter = new FlightsRecycleViewAdapter(this);
         recyclerView.setAdapter(flightsRecycleViewAdapter);
         updateList(new ArrayList<>());
     }
