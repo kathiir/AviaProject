@@ -39,7 +39,7 @@ public class FavoriteFlightsFragment extends Fragment {
     private void initViews(View view) {
         emptyFavoriteListLL = view.findViewById(R.id.favorite_flights_ll);
         progressBar = view.findViewById(R.id.favorite_flights_pb);
-        mAdapter = new FavoriteFlightsRecyclerViewAdapter();
+        mAdapter = new FavoriteFlightsRecyclerViewAdapter(this);
         recyclerView = view.findViewById(R.id.favorite_flights_rv);
         recyclerView.setAdapter(mAdapter);
         updateList(new ArrayList<>());

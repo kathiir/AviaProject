@@ -86,7 +86,7 @@ public class SearchFlightsFragment extends Fragment {
         dialogChooseDateFlight = new DialogChooseDateFlight();
         dialogChooseDateFlight.setStyle(DialogFragment.STYLE_NO_FRAME, 0);
         recyclerView = rootView.findViewById(R.id.search_flights_rv);
-        recentFlightsViewAdapter = new RecentFlightsViewAdapter();
+        recentFlightsViewAdapter = new RecentFlightsViewAdapter(this);
         recyclerView.setAdapter(recentFlightsViewAdapter);
         updateList(new ArrayList<>());
     }
@@ -116,7 +116,6 @@ public class SearchFlightsFragment extends Fragment {
                     .replace(containerId, f, "from")
                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                     .addToBackStack(SearchFlightsFragment.class.toString())
-
                     .commit();
         });
         cityToTV.setOnClickListener(v -> {
@@ -176,10 +175,12 @@ public class SearchFlightsFragment extends Fragment {
         this.startDate = startDate;
         this.lastDate = lastDate;
         SimpleDateFormat format = new SimpleDateFormat("d MMMM ");
-        if (startDate.equals(lastDate)) {
-            dateTV.setText(format.format(startDate.getTime()));
-        } else {
-            dateTV.setText(format.format(startDate.getTime()) + "  \n" + format.format(lastDate.getTime()));
+        if(startDate != null && lastDate != null){
+            if (  startDate.equals(lastDate)) {
+                dateTV.setText(format.format(startDate.getTime()));
+            } else {
+                dateTV.setText(format.format(startDate.getTime()) + "  \n" + format.format(lastDate.getTime()));
+            }
         }
     }
 }
