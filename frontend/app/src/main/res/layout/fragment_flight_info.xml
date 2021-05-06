@@ -76,7 +76,6 @@
                     android:textSize="20dp" />
 
                 <TextView
-
                     android:id="@+id/ticket_cost"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -86,7 +85,6 @@
                     android:text=" 98980"
                     android:textColor="@color/fiord"
                     android:textSize="20dp" />
-
             </LinearLayout>
 
             <LinearLayout

@@ -23,5 +23,6 @@
     <color name="gray">#828282</color>
     <color name="royal_blue">#4A51F0</color>
     <color name="salomie">#FFDC83</color>
+    <color name="error_red">#FFB6A6</color>
 
 </resources>
