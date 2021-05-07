@@ -161,8 +161,7 @@ public class HomeFragment extends Fragment {
         });
 
         telegramConfirmDialogButton.setOnClickListener(v -> {
-            Toast toast = Toast.makeText(this.getContext(), R.string.not_implemented, Toast.LENGTH_LONG);
-            toast.show();
+            CommonUtils.makeErrorToast(this.getContext(), getString(R.string.not_implemented));
         });
 
 

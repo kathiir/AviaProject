@@ -31,9 +31,9 @@ public class FlightsRecycleViewAdapter extends RecyclerView.Adapter<FlightsRecyc
         }
     }
 
-    private FoundFlights fragment;
+    private Fragment fragment;
 
-    public FlightsRecycleViewAdapter(FoundFlights fragment) {
+    public FlightsRecycleViewAdapter(Fragment fragment) {
         this.fragment = fragment;
     }
 

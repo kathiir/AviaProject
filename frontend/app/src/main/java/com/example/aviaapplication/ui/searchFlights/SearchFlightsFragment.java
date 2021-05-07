@@ -26,12 +26,15 @@ import com.example.aviaapplication.api.models.City;
 import com.example.aviaapplication.api.models.Flight;
 import com.example.aviaapplication.ui.cities.FragmentCitiesSearch;
 import com.example.aviaapplication.ui.foundFlights.FoundFlights;
+import com.example.aviaapplication.utils.CommonUtils;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 
 public class SearchFlightsFragment extends Fragment {
@@ -138,7 +141,24 @@ public class SearchFlightsFragment extends Fragment {
             }
         });
         searchFlightBtn.setOnClickListener(v -> {
-            Fragment f = FoundFlights.getInstance(startDate.getTime(), lastDate.getTime(), fromCity.getId(), toCity.getId());
+
+            if (startDate == null || lastDate == null) {
+                CommonUtils.makeErrorToast(this.getContext(), "Укажите дату полета");
+                return;
+            }
+            if (fromCity == null){
+                CommonUtils.makeErrorToast(this.getContext(), "Укажите пункт отправления");
+                return;
+            }
+            if (toCity == null){
+                CommonUtils.makeErrorToast(this.getContext(), "Укажите пункт назначения");
+                return;
+            }
+
+            Date bbb = startDate.getTime();
+            Date aaa = new Date(lastDate.getTime().getTime() + TimeUnit.DAYS.toMillis( 1 ));
+
+            Fragment f = FoundFlights.getInstance(bbb, aaa, fromCity.getId(), toCity.getId());
             getParentFragmentManager().beginTransaction()
                     .replace(containerId, f)
                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
@@ -188,8 +208,8 @@ public class SearchFlightsFragment extends Fragment {
 
     @SuppressLint("SetTextI18n")
     public void setNewDate(Calendar startDate, Calendar lastDate) {
-        this.startDate = startDate;
-        this.lastDate = lastDate;
+        this.startDate = initDate(startDate);
+        this.lastDate = initDate(lastDate);
         SimpleDateFormat format = new SimpleDateFormat("d MMMM ");
         if(startDate != null && lastDate != null){
             if (  startDate.equals(lastDate)) {
@@ -198,5 +218,13 @@ public class SearchFlightsFragment extends Fragment {
                 dateTV.setText(format.format(startDate.getTime()) + "  \n" + format.format(lastDate.getTime()));
             }
         }
+    }
+
+    private Calendar initDate(Calendar date){
+        date.set(Calendar.HOUR_OF_DAY, 0);
+        date.set(Calendar.MINUTE, 0);
+        date.set(Calendar.SECOND, 0);
+        date.set(Calendar.MILLISECOND, 0);
+        return date;
     }
 }

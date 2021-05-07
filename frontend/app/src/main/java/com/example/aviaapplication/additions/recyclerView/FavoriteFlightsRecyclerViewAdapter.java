@@ -19,6 +19,8 @@ import com.example.aviaapplication.utils.CommonUtils;
 
 import java.util.List;
 
+
+//deprecated candidate
 public class FavoriteFlightsRecyclerViewAdapter extends RecyclerView.Adapter<FavoriteFlightsRecyclerViewAdapter.FavoriteFlightsViewHolder> {
     public static class FavoriteFlightsViewHolder extends RecyclerView.ViewHolder {
         public FavoriteFlightsViewHolder(View view) {
