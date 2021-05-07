@@ -208,10 +208,11 @@ public class SearchFlightsFragment extends Fragment {
 
     @SuppressLint("SetTextI18n")
     public void setNewDate(Calendar startDate, Calendar lastDate) {
-        this.startDate = initDate(startDate);
-        this.lastDate = initDate(lastDate);
+
         SimpleDateFormat format = new SimpleDateFormat("d MMMM ");
         if(startDate != null && lastDate != null){
+            this.startDate = initDate(startDate);
+            this.lastDate = initDate(lastDate);
             if (  startDate.equals(lastDate)) {
                 dateTV.setText(format.format(startDate.getTime()));
             } else {
