@@ -140,7 +140,7 @@ public class HomeFragment extends Fragment {
                 CommonUtils.goToFragment(getParentFragmentManager(),
                         R.id.nav_host_fragment, FlightHistoryFragment.class);
             else
-                CommonUtils.makeErrorToast(getContext(), getString(R.string.not_implemented));
+                CommonUtils.makeErrorToast(getContext(), "Вам нужно сначала авторизоваться");
         });
 
         telegramInitDialogButton.setOnClickListener(v -> {
@@ -157,7 +157,7 @@ public class HomeFragment extends Fragment {
 
         temp.setOnClickListener(v -> {
             CommonUtils.goToFragment(getParentFragmentManager(),
-                    R.id.nav_host_fragment, FlightInfoFragment.class);
+                    R.id.nav_host_fragment, FlightInfoFragment.getInstance(1L));
         });
 
         temp1.setOnClickListener(v -> {
@@ -195,10 +195,10 @@ public class HomeFragment extends Fragment {
 
             // TODO(developer): send ID Token to server and validate
             usernameTextView.setText(account.getDisplayName());
-            Toast.makeText(getContext(), "token: " + account.getIdToken(), Toast.LENGTH_LONG).show();
+            //Toast.makeText(getContext(), "token: " + account.getIdToken(), Toast.LENGTH_LONG).show();
             homeViewModel.login(account);
         } catch (ApiException e) {
-            Toast.makeText(getContext(), "NO", Toast.LENGTH_LONG).show();
+            CommonUtils.makeErrorToast(this.getContext(), "Ошибка авторизации");
             usernameTextView.setText(R.string.title_user_name);
             Log.w(TAG, "handleSignInResult:error", e);
         }

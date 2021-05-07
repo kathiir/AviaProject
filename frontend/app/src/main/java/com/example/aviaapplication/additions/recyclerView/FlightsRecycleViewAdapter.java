@@ -54,7 +54,7 @@ public class FlightsRecycleViewAdapter extends RecyclerView.Adapter<FlightsRecyc
     private static final DiffUtil.ItemCallback<Flight> DIFF_CALLBACK = new DiffUtil.ItemCallback<Flight>() {
         @Override
         public boolean areItemsTheSame(@NonNull Flight oldProduct, @NonNull Flight newProduct) {
-            return oldProduct.getId().equals(newProduct.getId());
+            return oldProduct.getFlightId().equals(newProduct.getFlightId());
         }
 
         @SuppressLint("DiffUtilEquals")

@@ -10,6 +10,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.aviaapplication.R;
+import com.example.aviaapplication.api.Api;
 import com.example.aviaapplication.api.models.User;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 
@@ -18,11 +19,14 @@ public class HomeViewModel extends AndroidViewModel {
     private MutableLiveData<User> currentUser;
     private SharedPreferences preferences;
     private GoogleSignInAccount account;
+    private Api api;
 
     public HomeViewModel(@NonNull Application application) {
         super(application);
         userRepository = UserRepository.getInstance();
         preferences = application.getSharedPreferences(application.getResources().getString(R.string.key_current_user_name), Context.MODE_PRIVATE);
+
+        api = Api.getInstance();
 
         if (!preferences.getString(getApplication().getResources().getString(R.string.key_current_user_name), "").equals(""))
             currentUser = new MutableLiveData<>(new User(preferences.getString(getApplication().getResources().getString(R.string.key_current_user_name), "")));
@@ -35,12 +39,16 @@ public class HomeViewModel extends AndroidViewModel {
 
     public void login(GoogleSignInAccount account){
         this.account = account;
+
+        api.login();
+
         currentUser.setValue(userRepository.loginUser(account.getDisplayName()));
         preferences.edit().putString(getApplication().getResources().getString(R.string.key_current_user_name),
                 currentUser.getValue().getName()).apply();
     }
 
     public void logout(){
+        api.logout();
         currentUser.setValue(null);
         preferences.edit().clear().apply();
     }

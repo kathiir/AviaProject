@@ -16,7 +16,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.aviaapplication.R;
 import com.example.aviaapplication.api.models.Flight;
+import com.example.aviaapplication.api.models.RecentFlight;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class FlightHistoryRecyclerViewAdapter extends RecyclerView.Adapter<FlightHistoryRecyclerViewAdapter.FlightHistoryViewHolder> {
@@ -45,29 +48,30 @@ public class FlightHistoryRecyclerViewAdapter extends RecyclerView.Adapter<Fligh
         TextView dateTV = holder.itemView.findViewById(R.id.date_tv);
         TextView priceTV = holder.itemView.findViewById(R.id.price_tv);
 
-        Flight flight = differ.getCurrentList().get(position);
+        RecentFlight flight = differ.getCurrentList().get(position);
 
-        destinationTV.setText(flight.getSrc() + "-" + flight.getDest());
-        dateTV.setText(flight.getDate());
-        priceTV.setText(flight.getPrice().toString());
+        destinationTV.setText(flight.getFlightId().getDepAirportName() + "-" + flight.getFlightId().getArrivalAirportName());
+        DateFormat format = new SimpleDateFormat("dd MMMM yyyy");
+        dateTV.setText(format.format(flight.getFlightId().getDepartureDate()));
+        priceTV.setText(Integer.toString(flight.getFlightId().getBusinessPrice() * 2) + "₽");
     }
 
-    private AsyncListDiffer<Flight> differ = new AsyncListDiffer<>(this, DIFF_CALLBACK);
+    private AsyncListDiffer<RecentFlight> differ = new AsyncListDiffer<>(this, DIFF_CALLBACK);
 
-    private static final DiffUtil.ItemCallback<Flight> DIFF_CALLBACK = new DiffUtil.ItemCallback<Flight>() {
+    private static final DiffUtil.ItemCallback<RecentFlight> DIFF_CALLBACK = new DiffUtil.ItemCallback<RecentFlight>() {
         @Override
-        public boolean areItemsTheSame(@NonNull Flight oldProduct, @NonNull Flight newProduct) {
+        public boolean areItemsTheSame(@NonNull RecentFlight oldProduct, @NonNull RecentFlight newProduct) {
             return oldProduct.getId().equals(newProduct.getId());
         }
 
         @SuppressLint("DiffUtilEquals")
         @Override
-        public boolean areContentsTheSame(@NonNull Flight oldProduct, @NonNull Flight newProduct) {
+        public boolean areContentsTheSame(@NonNull RecentFlight oldProduct, @NonNull RecentFlight newProduct) {
             return oldProduct.equals(newProduct);
         }
     };
 
-    public void submitList(List<Flight> products) {
+    public void submitList(List<RecentFlight> products) {
         differ.submitList(products);
     }
 

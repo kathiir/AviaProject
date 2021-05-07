@@ -30,6 +30,16 @@ public class CommonUtils {
                 .commit();
     }
 
+    public static void goToFragment(FragmentManager fragmentManager, int hostFragmentId, Fragment target) {
+        fragmentManager.beginTransaction()
+                .setReorderingAllowed(true)
+                .replace(hostFragmentId, target, null)
+                .addToBackStack(null)
+                .commit();
+    }
+
+
+
     public static void makeErrorToast(Context context, String text){
         Toast toast = Toast.makeText(context, text, Toast.LENGTH_LONG);
         View view = toast.getView();

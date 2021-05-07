@@ -1,39 +1,120 @@
 package com.example.aviaapplication.api.models;
 
-public class Flight {
-    private Integer id;
+import java.util.Date;
 
-    private String src;
-    private String dest;
-    private Float price;
-    private String date;
+public class Flight {
+
+    private Long flightId;
+    private Date departureDate;
+    private Date arrivalDate;
+    private String arrivalAirportName;
+    private City arrivalCity;
+    private City depCity;
+    private String depAirportName;
+    private String depAirportCode;
+    private String arrivalAirportCode;
+    private Integer businessPrice;
+    private Integer economyPrice;
 
     public Flight(){}
 
-    public Flight(String src, String dest, Float price, String date) {
-        this.src = src;
-        this.dest = dest;
-        this.price = price;
-        this.date = date;
+    public Flight(Long flightId, Date departureDate, Date arrivalDate, String arrivalAirportName, String depAirportName, String arrivalAirportCode, String depAirportCode, Integer businessPrice, Integer economyPrice) {
+        this.flightId = flightId;
+        this.departureDate = departureDate;
+        this.arrivalDate = arrivalDate;
+        this.arrivalAirportName = arrivalAirportName;
+        this.depAirportName = depAirportName;
+        this.depAirportCode = depAirportCode;
+        this.arrivalAirportCode = arrivalAirportCode;
+        this.businessPrice = businessPrice;
+        this.economyPrice = economyPrice;
     }
 
-    public Integer getId() {
-        return id;
+    public City getArrivalCity() {
+        return arrivalCity;
     }
 
-    public String getSrc() {
-        return src;
+    public void setArrivalCity(City arrivalCity) {
+        this.arrivalCity = arrivalCity;
     }
 
-    public String getDest() {
-        return dest;
+    public City getDepCity() {
+        return depCity;
     }
 
-    public Float getPrice() {
-        return price;
+    public void setDepCity(City depCity) {
+        this.depCity = depCity;
     }
 
-    public String getDate() {
-        return date;
+    public Long getFlightId() {
+        return flightId;
+    }
+
+    public void setFlightId(Long flightId) {
+        this.flightId = flightId;
+    }
+
+    public Date getDepartureDate() {
+        return departureDate;
+    }
+
+    public void setDepartureDate(Date departureDate) {
+        this.departureDate = departureDate;
+    }
+
+    public Date getArrivalDate() {
+        return arrivalDate;
+    }
+
+    public void setArrivalDate(Date arrivalDate) {
+        this.arrivalDate = arrivalDate;
+    }
+
+    public String getArrivalAirportName() {
+        return arrivalAirportName;
+    }
+
+    public void setArrivalAirportName(String arrivalAirportName) {
+        this.arrivalAirportName = arrivalAirportName;
+    }
+
+    public String getDepAirportName() {
+        return depAirportName;
+    }
+
+    public void setDepAirportName(String depAirportName) {
+        this.depAirportName = depAirportName;
+    }
+
+    public String getDepAirportCode() {
+        return depAirportCode;
+    }
+
+    public void setDepAirportCode(String depAirportCode) {
+        this.depAirportCode = depAirportCode;
+    }
+
+    public String getArrivalAirportCode() {
+        return arrivalAirportCode;
+    }
+
+    public void setArrivalAirportCode(String arrivalAirportCode) {
+        this.arrivalAirportCode = arrivalAirportCode;
+    }
+
+    public Integer getBusinessPrice() {
+        return businessPrice;
+    }
+
+    public void setBusinessPrice(Integer businessPrice) {
+        this.businessPrice = businessPrice;
+    }
+
+    public Integer getEconomyPrice() {
+        return economyPrice;
+    }
+
+    public void setEconomyPrice(Integer economyPrice) {
+        this.economyPrice = economyPrice;
     }
 }

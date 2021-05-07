@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.AsyncListDiffer;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
@@ -41,8 +42,9 @@ public class RecentFlightsViewAdapter extends RecyclerView.Adapter<RecentFlights
 
     @Override
     public void onBindViewHolder(@NonNull RecentFlightsViewAdapter.FlightsViewHolder holder, int position) {
+        Fragment frag = FlightInfoFragment.getInstance(differ.getCurrentList().get(position).getFlightId());
         holder.itemView.setOnClickListener(v -> CommonUtils.goToFragment(fragment.getParentFragmentManager(),
-                R.id.nav_host_fragment, FlightInfoFragment.class));
+                R.id.nav_host_fragment, frag));
     }
 
     private AsyncListDiffer<Flight> differ = new AsyncListDiffer<>(this, DIFF_CALLBACK);
@@ -50,7 +52,7 @@ public class RecentFlightsViewAdapter extends RecyclerView.Adapter<RecentFlights
     private static final DiffUtil.ItemCallback<Flight> DIFF_CALLBACK = new DiffUtil.ItemCallback<Flight>() {
         @Override
         public boolean areItemsTheSame(@NonNull Flight oldProduct, @NonNull Flight newProduct) {
-            return oldProduct.getId().equals(newProduct.getId());
+            return oldProduct.getFlightId().equals(newProduct.getFlightId());
         }
 
         @SuppressLint("DiffUtilEquals")

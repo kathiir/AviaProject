@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.aviaapplication.R;
 import com.example.aviaapplication.additions.recyclerView.FlightHistoryRecyclerViewAdapter;
 import com.example.aviaapplication.api.models.Flight;
+import com.example.aviaapplication.api.models.RecentFlight;
 
 import java.util.List;
 
@@ -46,7 +47,7 @@ public class FlightHistoryFragment extends Fragment {
         flightHistoryViewModel.getFlights().observe(getViewLifecycleOwner(), this::updateList);
     }
 
-    public void updateList(List<Flight> list){
+    public void updateList(List<RecentFlight> list){
         if (list.isEmpty()){
             emptyHistoryLayout.setVisibility(View.VISIBLE);
         }else {

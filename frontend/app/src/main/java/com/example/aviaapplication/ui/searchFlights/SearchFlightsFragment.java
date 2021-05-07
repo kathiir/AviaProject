@@ -15,6 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
@@ -46,10 +47,12 @@ public class SearchFlightsFragment extends Fragment {
     private DialogChooseDateFlight dialogChooseDateFlight;
     private RecentFlightsViewAdapter recentFlightsViewAdapter;
     private RecyclerView recyclerView;
+    private SearchFlightViewModel searchFlightViewModel;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+        searchFlightViewModel = new ViewModelProvider(this).get(SearchFlightViewModel.class);
         View view = inflater.inflate(R.layout.fragment_search_flights, container, false);
         containerId = container.getId();
         initViews(view);
@@ -90,7 +93,7 @@ public class SearchFlightsFragment extends Fragment {
         recyclerView = rootView.findViewById(R.id.search_flights_rv);
         recentFlightsViewAdapter = new RecentFlightsViewAdapter(this);
         recyclerView.setAdapter(recentFlightsViewAdapter);
-        updateList(new ArrayList<>());
+        updateList(searchFlightViewModel.getRecentFlights());
     }
 
 
@@ -163,9 +166,7 @@ public class SearchFlightsFragment extends Fragment {
     }
 
     public void updateList(List<Flight> list) {
-        list.addAll(Arrays.asList(new Flight(), new Flight(), new Flight(), new Flight(), new Flight(), new Flight(), new Flight(), new Flight()));
         recentFlightsViewAdapter.submitList(list);
-
     }
 
     public void setCityFrom(City cityFrom) {
