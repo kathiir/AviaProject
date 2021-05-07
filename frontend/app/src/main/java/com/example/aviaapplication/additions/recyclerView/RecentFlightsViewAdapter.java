@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -18,6 +19,8 @@ import com.example.aviaapplication.ui.flightInfo.FlightInfoFragment;
 import com.example.aviaapplication.ui.searchFlights.SearchFlightsFragment;
 import com.example.aviaapplication.utils.CommonUtils;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class RecentFlightsViewAdapter extends RecyclerView.Adapter<RecentFlightsViewAdapter.FlightsViewHolder> {
@@ -42,7 +45,16 @@ public class RecentFlightsViewAdapter extends RecyclerView.Adapter<RecentFlights
 
     @Override
     public void onBindViewHolder(@NonNull RecentFlightsViewAdapter.FlightsViewHolder holder, int position) {
-        Fragment frag = FlightInfoFragment.getInstance(differ.getCurrentList().get(position).getFlightId());
+        Flight flight = differ.getCurrentList().get(position);
+        Fragment frag = FlightInfoFragment.getInstance(flight.getFlightId());
+
+        TextView dateTV = holder.itemView.findViewById(R.id.date_tv);
+        TextView destTV = holder.itemView.findViewById(R.id.destinations_tv);
+
+        destTV.setText(flight.getDepCity().getCityName() + " - " + flight.getArrivalCity().getCityName());
+        DateFormat dateFormat = new SimpleDateFormat("dd.MM.YYYY");
+        dateTV.setText(dateFormat.format(flight.getDepartureDate()));
+
         holder.itemView.setOnClickListener(v -> CommonUtils.goToFragment(fragment.getParentFragmentManager(),
                 R.id.nav_host_fragment, frag));
     }
