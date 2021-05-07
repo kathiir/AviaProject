@@ -70,7 +70,8 @@ public class HomeFragment extends Fragment {
         logoutButton = root.findViewById(R.id.button_logout);
         temp = root.findViewById(R.id.temp);  //remove before production
         temp1 = root.findViewById(R.id.temp1);
-
+        temp.setVisibility(View.GONE);
+        temp1.setVisibility(View.GONE);
 
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getContext());
 

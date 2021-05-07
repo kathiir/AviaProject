@@ -5,8 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.AsyncListDiffer;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,6 +19,9 @@ import com.example.aviaapplication.ui.flightInfo.FlightInfoFragment;
 import com.example.aviaapplication.ui.foundFlights.FoundFlights;
 import com.example.aviaapplication.utils.CommonUtils;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class FlightsRecycleViewAdapter extends RecyclerView.Adapter<FlightsRecycleViewAdapter.FlightsViewHolder> {
@@ -43,8 +48,36 @@ public class FlightsRecycleViewAdapter extends RecyclerView.Adapter<FlightsRecyc
     @Override
     public void onBindViewHolder(@NonNull FlightsRecycleViewAdapter.FlightsViewHolder holder, int position) {
         Flight flight = differ.getCurrentList().get(position);
+
+        TextView titleTV = holder.itemView.findViewById(R.id.from_to_title_tv);
+        TextView priceTV = holder.itemView.findViewById(R.id.ticket_cost);
+        TextView depDateTV = holder.itemView.findViewById(R.id.flight_info_departure_date_tv);
+
+        TextView fromTimeTV = holder.itemView.findViewById(R.id.flight_info_departure_time_tv);
+        TextView toTimeTV = holder.itemView.findViewById(R.id.flight_info_arrival_time_tv);
+
+        TextView fromCodeTV = holder.itemView.findViewById(R.id.departure_code_tv);
+        TextView toCodeTV = holder.itemView.findViewById(R.id.arrival_code_tv);
+
+        TextView durationTV = holder.itemView.findViewById(R.id.flight_time_duration_tv);
+
+        DateFormat dateFormat = new SimpleDateFormat("d MMM");
+        DateFormat timeFormat = new SimpleDateFormat("H:mm");
+        DateFormat diff = new SimpleDateFormat("H час");
+
+        titleTV.setText(flight.getDepCity().getCityName() + " - " + flight.getArrivalCity().getCityName());
+        priceTV.setText(flight.getEconomyPrice().toString() + "₽");
+        depDateTV.setText(dateFormat.format(flight.getDepartureDate()));
+        fromTimeTV.setText(timeFormat.format(flight.getDepartureDate()));
+        toTimeTV.setText(timeFormat.format(flight.getArrivalDate()));
+        fromCodeTV.setText(flight.getDepCity().getCityCode());
+        toCodeTV.setText(flight.getArrivalCity().getCityCode());
+
+        durationTV.setText(diff.format(new Date(flight.getDepartureDate().getTime()- flight.getArrivalDate().getTime())));
+
+        Fragment target = FlightInfoFragment.getInstance(flight.getFlightId());
         holder.itemView.setOnClickListener(v -> CommonUtils.goToFragment(fragment.getParentFragmentManager(),
-                R.id.nav_host_fragment, FlightInfoFragment.class));
+                R.id.nav_host_fragment, target));
 
 
     }

@@ -7,24 +7,19 @@ import androidx.annotation.RequiresApi;
 import com.example.aviaapplication.api.models.City;
 import com.example.aviaapplication.api.models.Flight;
 import com.example.aviaapplication.api.models.Passenger;
-import com.example.aviaapplication.api.models.RecentCity;
 import com.example.aviaapplication.api.models.RecentFlight;
 import com.example.aviaapplication.api.models.User;
 
-import java.lang.reflect.Array;
-import java.security.PublicKey;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
-import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 public class Api {
@@ -33,7 +28,7 @@ public class Api {
     private Map<Long, List<Flight>> favoriteFlights;
     private List<RecentFlight> recentFlights;
     private Map<Long, Set<Flight>> recentViewed;
-    private List<RecentCity> recentCities;
+    private Map<Long, Set<City>> recentCities;
     private List<Passenger> passengers;
     private List<User> users;
     private List<City> cities;
@@ -70,7 +65,7 @@ public class Api {
         users.add(new User(1L, "Владимир Беспалов", null));
 
         passengers = new ArrayList<>();
-        recentCities = new ArrayList<>();
+        recentCities = new TreeMap<>();
         recentFlights = new ArrayList<>();
         favoriteFlights = new TreeMap<>();
         recentViewed = new TreeMap<>();
@@ -86,8 +81,8 @@ public class Api {
                     new Flight(3L, format.parse("05 01, 2021 10:10:00"), format.parse("05 01, 2021 11:30:00"),  "Чертовицкое","Домодедово",  "VOZ","DME", 7921, 5892)
             ));
             for (int i = 0; i < 2; i++) {
-                flights.get(i).setArrivalCity(cities.get(0));
-                flights.get(i).setDepCity(cities.get(1));
+                flights.get(i).setArrivalCity(cities.get(1));
+                flights.get(i).setDepCity(cities.get(0));
             }
 
 
@@ -168,6 +163,34 @@ public class Api {
         if (recentViewed.containsKey(userId))
             return new ArrayList<>(recentViewed.get(userId));
         return new ArrayList<>();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public List<Flight> find(Long from, Long to, Long fromCity, Long toCity){
+        List<Flight> res = flights.stream().filter(item ->
+                item.getDepartureDate().getTime() >= from &&
+                        item.getDepartureDate().getTime() <= to &&
+                        item.getDepCity().getId().equals(fromCity) &&
+                        item.getArrivalCity().getId().equals(toCity)).collect(Collectors.toList());
+        return res;
+    }
+
+    public List<City> getAllCities(){
+        return cities;
+    }
+
+    public List<City> getRecentCities(Long userId){
+        if (recentCities.containsKey(userId))
+            return new ArrayList<>(recentCities.get(userId));
+
+        return new ArrayList<>();
+    }
+
+    public void addRecentCity(Long userId, City city){
+        if(recentCities.containsKey(userId))
+            recentCities.get(userId).add(city);
+        else
+            recentCities.put(userId, new HashSet<>(Arrays.asList(city)));
     }
 }
 

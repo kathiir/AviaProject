@@ -9,6 +9,7 @@ import android.widget.SearchView;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.aviaapplication.R;
@@ -28,7 +29,10 @@ public class FragmentCitiesSearch extends Fragment {
     Integer containerId;
     SearchView simpleSearchView;
 
+    private CitiesViewModel citiesViewModel;
+
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+        citiesViewModel = new ViewModelProvider(this).get(CitiesViewModel.class);
         View view = inflater.inflate(R.layout.fragment_cities, container, false);
         initViews(view);
         setListeners();
@@ -38,6 +42,8 @@ public class FragmentCitiesSearch extends Fragment {
 
     public void sendChosenData(City city) {
         SearchFlightsFragment f = (SearchFlightsFragment) getTargetFragment();
+        citiesViewModel.addRecentCity(city);
+
         if (getTag().equals("from")) {
             f.setCityFrom(city);
         } else {
@@ -75,7 +81,7 @@ public class FragmentCitiesSearch extends Fragment {
         recyclerViewAllCities = view.findViewById(R.id.fragment_cities_all_cities_rv);
         recyclerViewRecentCities.setAdapter(recycleViewAdapterRecentCities);
         recyclerViewAllCities.setAdapter(recycleViewAdapterAllCities);
-        updateList(new ArrayList<>());
+        updateList(citiesViewModel.getAllCities());
     }
 
     public void getRecentCites() {
@@ -83,9 +89,7 @@ public class FragmentCitiesSearch extends Fragment {
     }
 
     public void updateList(List<City> list) {
-        list.addAll(Arrays.asList(new City(), new City(), new City(""), new City(), new City(), new City(), new City(), new City()));
         recycleViewAdapterAllCities.submitList(list);
-        recycleViewAdapterRecentCities.submitList(Arrays.asList(new City(), new City(), new City()));
-
+        recycleViewAdapterRecentCities.submitList(citiesViewModel.getRecentCities());
     }
 }

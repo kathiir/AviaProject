@@ -104,7 +104,7 @@ public class FlightInfoFragment extends Fragment {
         Flight fl = flightInfoViewModel.getFlight().getValue();
         costTV.setText(fl.getEconomyPrice().toString());
 
-        DateFormat time = new SimpleDateFormat("hh:mm");
+        DateFormat time = new SimpleDateFormat("HH:mm");
         DateFormat date = new SimpleDateFormat("dd MMMM, E", new Locale("ru"));
 
         depTimeTV.setText(time.format(fl.getDepartureDate()));
@@ -151,6 +151,10 @@ public class FlightInfoFragment extends Fragment {
             Flight fl = flightInfoViewModel.getFlight().getValue();
             costTV.setText(fl.getEconomyPrice().toString());
             buttonBuy.setText("Купить за " + fl.getEconomyPrice().toString() + "₽");
+        });
+
+        buttonBuy.setOnClickListener(v -> {
+            CommonUtils.makeErrorToast(this.getContext(), getString(R.string.not_implemented));
         });
 
         favCheckbox.setOnClickListener(v -> {

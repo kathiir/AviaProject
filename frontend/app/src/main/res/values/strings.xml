@@ -1,5 +1,5 @@
 <resources>
-    <string name="not_implemented">Not implemented now</string>
+    <string name="not_implemented">В разработке</string>
 
     <string name="app_name">AviaApplication</string>
     <string name="title_main_search">Найти билет</string>

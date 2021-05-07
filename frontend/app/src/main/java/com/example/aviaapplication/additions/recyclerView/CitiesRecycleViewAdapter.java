@@ -100,6 +100,7 @@ public class CitiesRecycleViewAdapter extends RecyclerView.Adapter<CitiesRecycle
         City c = differ.getCurrentList().get(position);
         holder.nameCityTv.setText(c.getCityName());
         holder.itemView.setOnClickListener(v -> {
+
             fragmentCitiesSearch.sendChosenData(c);
         });
     }

@@ -121,7 +121,6 @@ public class SearchFlightsFragment extends Fragment {
                     .replace(containerId, f, "from")
                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                     .addToBackStack(SearchFlightsFragment.class.toString())
-
                     .commit();
         });
         cityToTV.setOnClickListener(v -> {
@@ -139,7 +138,7 @@ public class SearchFlightsFragment extends Fragment {
             }
         });
         searchFlightBtn.setOnClickListener(v -> {
-            Fragment f = new FoundFlights();
+            Fragment f = FoundFlights.getInstance(startDate.getTime(), lastDate.getTime(), fromCity.getId(), toCity.getId());
             getParentFragmentManager().beginTransaction()
                     .replace(containerId, f)
                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)

@@ -22,6 +22,7 @@
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/from_to_title_tv"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -40,6 +41,7 @@
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/ticket_cost"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -47,6 +49,7 @@
                 android:textColor="@color/dark_blue" />
 
             <TextView
+                android:id="@+id/flight_info_departure_date_tv"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="40dp"
@@ -69,6 +72,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/flight_info_departure_time_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_light"
@@ -77,6 +81,7 @@
                     android:textColor="@color/black" />
 
                 <TextView
+                    android:id="@+id/departure_code_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_light"
@@ -98,6 +103,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/flight_info_arrival_time_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_light"
@@ -106,6 +112,7 @@
                     android:textColor="@color/black" />
 
                 <TextView
+                    android:id="@+id/arrival_code_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_light"
@@ -120,6 +127,7 @@
                 android:layout_weight="1" />
 
             <TextView
+                android:id="@+id/flight_time_duration_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="40dp"
