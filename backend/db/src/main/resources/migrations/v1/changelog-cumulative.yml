@@ -1,0 +1,12 @@
+databaseChangeLog:
+  - preConditions:
+      - dbms:
+          type: postgresql
+  - changeSet:
+      id: avia-1-040521-1436
+      author: dasha
+      comment: Create initial information
+      changes:
+        - sqlFile:
+            path: avia-1-040521-1436.sql
+            relativeToChangelogFile: true
