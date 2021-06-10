@@ -5,6 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.PropertySources;
 import service.ServicesConfig;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.spi.DocumentationType;
@@ -13,6 +15,10 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
 @EnableSwagger2
+@PropertySources({
+        @PropertySource("classpath:application.properties"),
+        @PropertySource("classpath:secrets.properties")
+})
 @Import(ServicesConfig.class)
 @ComponentScan(basePackages = {"com"})
 public class AviaBackApplication {
