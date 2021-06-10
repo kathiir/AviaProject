@@ -29,11 +29,9 @@ public class FavoriteFlightsApi {
 
     @PostMapping(value = "/likedInfo", consumes = "application/json")
     Integer getInfo(@RequestBody FavoriteFlight flight) {
-
         return favoriteFlightsFacade.getLikedInfo(flight);
     }
-
-
+    
     @PostMapping(consumes = "application/json")
     void addToFavorite(@RequestBody FavoriteFlight flight) {
         favoriteFlightsFacade.addToFavorite(flight);
