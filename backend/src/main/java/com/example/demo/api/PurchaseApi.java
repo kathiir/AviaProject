@@ -30,4 +30,9 @@ public class PurchaseApi {
     public List<Purchase> getPurchases(@PathVariable String userId) {
         return purchaseFacade.getPurchases(userId);
     }
+
+    @GetMapping(value = "/count/{userId}")
+    public Integer getPurchasesCount(@PathVariable String userId){
+        return purchaseFacade.getPurchasesCount(userId);
+    }
 }

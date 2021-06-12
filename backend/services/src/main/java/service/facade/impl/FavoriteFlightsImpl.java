@@ -33,6 +33,11 @@ public class FavoriteFlightsImpl implements FavoriteFlightsFacade {
     }
 
     @Override
+    public boolean deleteFromFavorite(FavoriteFlight flight) {
+        return favoriteFlightsService.deleteFromFavorite(flight);
+    }
+
+    @Override
     public Integer getLikedInfo(@Valid FavoriteFlight flight) {
         return favoriteFlightsService.getLikedInfo(flight);
     }

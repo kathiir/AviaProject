@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface PurchaseRepository extends CrudRepository<PurchaseModel, Integer> {
     List<PurchaseModel> findAllByUserId(String userId);
+    Integer countAllByUserId(String userId);
 }

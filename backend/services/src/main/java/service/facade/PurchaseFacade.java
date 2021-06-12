@@ -11,4 +11,6 @@ public interface PurchaseFacade {
     void takePurchase(@Valid Purchase purchase);
 
     List<Purchase> getPurchases(String userId);
+
+    Integer getPurchasesCount(String userId);
 }

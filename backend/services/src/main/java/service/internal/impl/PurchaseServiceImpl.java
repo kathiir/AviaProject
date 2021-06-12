@@ -39,4 +39,10 @@ public class PurchaseServiceImpl implements PurchaseService {
         List<PurchaseModel> models = purchaseRepository.findAllByUserId(userId);
         return purchaseMapper.toListPurchase(models);
     }
+
+    @Override
+    public Integer getPurchasesCount(String userId) {
+        var res = purchaseRepository.countAllByUserId(userId);
+        return purchaseRepository.countAllByUserId(userId);
+    }
 }

@@ -14,6 +14,8 @@ public interface FavoriteFlightsFacade {
 
     boolean deleteFromFavorite(Integer flightId);
 
+    boolean deleteFromFavorite(FavoriteFlight flight);
+
     Integer getLikedInfo(@Valid FavoriteFlight flight);
 
 }

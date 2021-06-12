@@ -18,10 +18,8 @@ public class Purchase {
     String userId;
     @Valid
     Flight flight;
-
     @NotNull(message = ValidationErrorTerms.COUNT_PASSENGER_MUST_BE_SET)
     Integer countPassengers;
-
     @NotNull(message = ValidationErrorTerms.FLIGHT_COST_MUST_BE_SET)
     Double flightCost;
 }

@@ -9,4 +9,6 @@ public interface PurchaseService {
     void takePurchase(Purchase purchase);
 
     List<Purchase> getPurchases(String userId);
+
+    Integer getPurchasesCount(String userId);
 }

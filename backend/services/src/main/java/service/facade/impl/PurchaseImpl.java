@@ -26,4 +26,9 @@ public class PurchaseImpl implements PurchaseFacade {
     public List<Purchase> getPurchases(String userId) {
         return purchaseService.getPurchases(userId);
     }
+
+    @Override
+    public Integer getPurchasesCount(String userId) {
+        return purchaseService.getPurchasesCount(userId);
+    }
 }

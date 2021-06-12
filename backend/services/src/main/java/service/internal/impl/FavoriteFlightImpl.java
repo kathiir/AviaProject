@@ -3,6 +3,7 @@ package service.internal.impl;
 import avia.models.FavoriteFlightModel;
 import avia.models.FlightModel;
 import avia.repositories.FavoriteFlightRepository;
+import javax.print.DocFlavor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import service.internal.FavoriteFlightsService;
@@ -55,6 +56,23 @@ public class FavoriteFlightImpl implements FavoriteFlightsService {
     }
 
     @Override
+    public boolean deleteFromFavorite(FavoriteFlight flight) {
+        Integer flightId = flightService.addFlight(flight.getFlight());
+
+        if (flightId != null) {
+
+            FavoriteFlightModel favoriteFlightModel = favoriteFlightRepository.findFirstByFlightModel_IdAndUserId(flightId, flight.getUserId());
+            if (favoriteFlightModel != null) {
+                favoriteFlightRepository.delete(favoriteFlightModel);
+                return true;
+            }
+
+        }
+
+        return false;
+    }
+
+    @Override
     public Integer getLikedInfo(FavoriteFlight flight) {
         Integer flightId = flightService.addFlight(flight.getFlight());
         if (flightId != null) {
@@ -63,7 +81,7 @@ public class FavoriteFlightImpl implements FavoriteFlightsService {
                 return favoriteFlightModel.getId();
             }
         }
-        return null;
+        return 0;
     }
 
 

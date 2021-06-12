@@ -37,6 +37,11 @@ public class FavoriteFlightsApi {
         favoriteFlightsFacade.addToFavorite(flight);
     }
 
+    @PostMapping(value = "/delete", consumes = "application/json")
+    Boolean deleteFromFavorite(@RequestBody FavoriteFlight flight){
+        return favoriteFlightsFacade.deleteFromFavorite(flight);
+    }
+
     @DeleteMapping(value = "/{flight_id}")
     boolean deleteFromFavorite(@PathVariable("flight_id") Integer flightId) {
         return favoriteFlightsFacade.deleteFromFavorite(flightId);
