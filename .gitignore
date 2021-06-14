@@ -15,4 +15,4 @@
 .externalNativeBuild
 .cxx
 local.properties
-backend/src/main/resources/secrets.properties
+backend/src/main/resources/secrets.propertiesfrontend/app/src/main/res/values/secrets.xml
