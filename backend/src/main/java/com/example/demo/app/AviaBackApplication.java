@@ -20,6 +20,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
         @PropertySource("classpath:secrets.properties")
 })
 @Import(ServicesConfig.class)
+
 @ComponentScan(basePackages = {"com"})
 public class AviaBackApplication {
 

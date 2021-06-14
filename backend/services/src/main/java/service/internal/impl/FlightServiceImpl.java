@@ -63,13 +63,14 @@ public class FlightServiceImpl implements FlightService {
     }
 
     @Override
-    public void addToRecent(RecentFlight recentFlight) {
+    public Integer addToRecent(RecentFlight recentFlight) {
         RecentFlightModel model = recentFlightMapper.toRecentFlightModel(recentFlight);
         Integer flightId = addFlight(recentFlight.getFlight());
         model.getFlightModel().setId(flightId);
         try {
-            recentFlightRepository.save(model);
+          return   recentFlightRepository.save(model).getId();
         } catch (Exception ignored) {
+            return null;
         }
     }
 
@@ -78,8 +79,9 @@ public class FlightServiceImpl implements FlightService {
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String outDate = dateFormat.format(flight.getOutboundDate());
+        String inDate = dateFormat.format(flight.getInboundDate());
 
-        Response response = searchRequestBuilder(flight.getDestinationPlace().getPlaceId(), flight.getOriginPlace().getPlaceId(), outDate);
+        Response response = searchRequestBuilder(flight.getDestinationPlace().getPlaceId(), flight.getOriginPlace().getPlaceId(), outDate, inDate);
 
         if (response.isSuccessful()) {
             Gson gson = new GsonBuilder()
@@ -136,8 +138,10 @@ public class FlightServiceImpl implements FlightService {
         for (int i = 0; i < modelList.size(); i++) {
 
             String outDate = dateFormat.format(modelList.get(i).getOutboundDate());
+            String inbDate = dateFormat.format(modelList.get(i).getInboundDate());
+
             Response response = searchRequestBuilder(modelList.get(i).getDestinationPlace().getPlaceId(),
-                    modelList.get(i).getOriginPlace().getPlaceId(), outDate);
+                    modelList.get(i).getOriginPlace().getPlaceId(), outDate, inbDate);
             if (response.isSuccessful()) {
                 Gson gson = new GsonBuilder()
                         .registerTypeAdapter(Date.class, new DateDeserializer())
@@ -153,10 +157,10 @@ public class FlightServiceImpl implements FlightService {
     }
 
 
-    private Response searchRequestBuilder(String destinationPlace, String originPlace, String date) throws IOException {
+    private Response searchRequestBuilder(String destinationPlace, String originPlace, String outDate, String inDate) throws IOException {
         Request request = new Request.Builder()
                 .url("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/ru/rub/ru/" + originPlace + "/"
-                        + destinationPlace + "/" + date + "?inboundpartialdate=%20")
+                        + destinationPlace + "/" + outDate + "?inboundpartialdate="+inDate)
                 .get()
                 .addHeader("x-rapidapi-key", rapid)
                 .addHeader("x-rapidapi-host", host)

@@ -8,7 +8,7 @@ public interface FavoriteFlightsService {
 
     List<FavoriteFlight> getAllFavorite(String userId);
 
-    void addToFavorite(FavoriteFlight flight);
+    Integer addToFavorite(FavoriteFlight flight);
 
     boolean deleteFromFavorite(Integer flightId);
 

@@ -3,7 +3,9 @@ package service.internal.impl;
 import avia.models.FavoriteFlightModel;
 import avia.models.FlightModel;
 import avia.repositories.FavoriteFlightRepository;
+
 import javax.print.DocFlavor;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import service.internal.FavoriteFlightsService;
@@ -34,14 +36,15 @@ public class FavoriteFlightImpl implements FavoriteFlightsService {
     }
 
     @Override
-    public void addToFavorite(FavoriteFlight flight) {
+    public Integer addToFavorite(FavoriteFlight flight) {
         FavoriteFlightModel model = flightMapper.toFavoriteFlightModel(flight);
         Integer flightId = flightService.addFlight(flight.getFlight());
         model.getFlightModel().setId(flightId);
 
         try {
-            favoriteFlightRepository.save(model);
+            return favoriteFlightRepository.save(model).getId();
         } catch (Exception ignored) {
+            return null;
         }
     }
 

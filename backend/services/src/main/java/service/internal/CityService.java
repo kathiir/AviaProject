@@ -12,7 +12,7 @@ public interface CityService {
 
     List<City> searchPlaceByName(String name) throws IOException;
 
-    void addRecentCity(RecentCity recentCity);
+    Integer addRecentCity(RecentCity recentCity);
 
     Integer addCity(City city);
 

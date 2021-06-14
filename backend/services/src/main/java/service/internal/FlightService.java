@@ -15,7 +15,7 @@ public interface FlightService {
 
     Integer addFlight(Flight flight);
 
-    void addToRecent(RecentFlight recentFlight);
+    Integer addToRecent(RecentFlight recentFlight);
 
     void updateCosts() throws IOException;
 

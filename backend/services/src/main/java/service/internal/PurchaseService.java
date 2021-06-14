@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface PurchaseService {
 
-    void takePurchase(Purchase purchase);
+    Integer takePurchase(Purchase purchase);
 
     List<Purchase> getPurchases(String userId);
 

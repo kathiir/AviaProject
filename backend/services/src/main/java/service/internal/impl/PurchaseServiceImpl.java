@@ -14,12 +14,19 @@ import java.util.List;
 
 @Service
 public class PurchaseServiceImpl implements PurchaseService {
+    private  final PurchaseMapper purchaseMapper;
+    private  final PurchaseRepository purchaseRepository;
+    private  final FlightService flightService;
 
-    private final PurchaseMapper purchaseMapper;
-    private final PurchaseRepository purchaseRepository;
-    private final FlightService flightService;
-
+    /*    @Autowired
+    private   PurchaseMapper purchaseMapper;
     @Autowired
+    private   PurchaseRepository purchaseRepository;
+    @Autowired
+    private   FlightService flightService;
+*/
+
+ @Autowired
     public PurchaseServiceImpl(PurchaseMapper purchaseMapper, PurchaseRepository purchaseRepository, FlightService flightService) {
         this.purchaseMapper = purchaseMapper;
         this.purchaseRepository = purchaseRepository;
@@ -27,11 +34,12 @@ public class PurchaseServiceImpl implements PurchaseService {
     }
 
     @Override
-    public void takePurchase(Purchase purchase) {
+    public Integer takePurchase(Purchase purchase) {
         PurchaseModel model = purchaseMapper.toPurchaseModel(purchase);
         Integer flightId = flightService.addFlight(purchase.getFlight());
         model.getFlightModel().setId(flightId);
-        purchaseRepository.save(model);
+        PurchaseModel existing =   purchaseRepository.save(model);
+        return existing.getId();
     }
 
     @Override
