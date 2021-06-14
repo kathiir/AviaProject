@@ -1,3 +1,0 @@
-include ':cosmocalendar'
-include ':app'
-rootProject.name = "AviaApplication"
