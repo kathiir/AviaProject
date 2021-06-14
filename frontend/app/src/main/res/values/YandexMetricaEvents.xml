@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--common event    -->
+    <string name="event_app_started">Application started</string>
+
+    <!--user home    -->
+    <string name="event_user_logged_in">User Logged In</string>
+    <string name="event_user_logged_out">User Logged Out</string>
+    <string name="event_user_history">User Checked His Flights History</string>
+    <string name="event_user_swithed_to_home">User Went To Home Screen</string>
+
+    <!--user favorites    -->
+    <string name="event_user_checked_favorites">User Checked His Favorites</string>
+    <string name="event_user_selected_flight_in_favorite">User Selected One Of His Favorite Flights</string>
+    <string name="event_user_went_to_favorites">User Went To Favorites</string>
+
+    <!--search    -->
+    <string name="event_selected_departure_city">User Selected Departure City</string>
+    <string name="event_selected_arrival_city">User Selected Arrival City</string>
+    <string name="event_user_selected_dates">User Selected Dates</string>
+    <string name="event_user_perform_search">User Started Search</string>
+    <string name="event_user_selected_flight_using_search">User Selected Flight Using Search</string>
+    <string name="event_user_went_to_search_screen">User Went To Search Screen</string>
+    <string name="event_user_bought_tickets">User Bought Tickets</string>
+
+
+</resources>

@@ -1,0 +1,14 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+<!--all corners-->
+    <dimen name="default_corner_radius">10dp</dimen>
+<!--    home screen-->
+    <dimen name="default_home_margin">10dp</dimen>
+<!--login screen-->
+    <dimen name="default_login_margin_horisontal">10dp</dimen>
+    <dimen name="default_login_margin_vertical">5dp</dimen>
+    <dimen name="default_login_padding">10dp</dimen>
+</resources>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:minWidth="700dp"
+    android:orientation="vertical">
+
+    <com.applikeysolutions.cosmocalendar.view.CalendarView
+        android:id="@+id/dialog_choose_date_cosmo_calendar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:ignore="MissingConstraints" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/dialog_choose_date_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        app:cornerRadius="@dimen/default_corner_radius"
+        android:backgroundTint="@color/dark_blue"
+        android:fontFamily="@font/roboto_light"
+        android:paddingVertical="10dp"
+        android:text="Готово"
+        android:layout_marginHorizontal="20dp"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="17sp"
+        />
+</FrameLayout>
