@@ -66,13 +66,15 @@ public class CityServiceImpl implements CityService {
     }
 
     @Override
-    public void addRecentCity(RecentCity recentCity) {
+    public Integer addRecentCity(RecentCity recentCity) {
         Integer idCity = addCity(recentCity.getCity());
         RecentCityModel model = cityMapper.toRecentCityModel(recentCity);
         model.getCity().setId(idCity);
         try {
             recentCityRepository.save(model);
-        } catch (Exception ignored) {
+            return recentCityRepository.save(model).getId();
+        } catch (Exception e) {
+            return null;
         }
     }
 

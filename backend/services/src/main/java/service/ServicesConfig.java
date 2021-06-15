@@ -8,7 +8,6 @@ import org.springframework.context.annotation.Import;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 @Configuration
-@EnableAutoConfiguration
 @EnableScheduling
 @Import(DbConfig.class)
 @ComponentScan(basePackageClasses = ServicesConfig.class)

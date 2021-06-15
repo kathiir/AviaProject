@@ -22,7 +22,6 @@ dependencies {
 	implementation "javax.validation:validation-api:2.0.1.Final"
 
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
 	implementation group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
 	implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
@@ -30,6 +29,7 @@ dependencies {
 	implementation group: 'org.springframework', name: 'spring-tx', version: '5.3.5'
 
 }
+
 
 test {
 	useJUnitPlatform()
