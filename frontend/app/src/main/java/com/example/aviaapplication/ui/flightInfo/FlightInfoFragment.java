@@ -33,11 +33,14 @@ import com.yandex.metrica.YandexMetrica;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Random;
+
+import lombok.val;
 
 public class FlightInfoFragment extends Fragment {
     private ScrollView view;
@@ -64,6 +67,7 @@ public class FlightInfoFragment extends Fragment {
     private TextView flightTimeDurationTV;
     private Button buttonBuy;
     private CheckBox favCheckbox;
+    private CheckBox tzCheckbox;
 
     private MaterialButton buttonBusiness;
     private MaterialButton buttonEconomy;
@@ -112,12 +116,13 @@ public class FlightInfoFragment extends Fragment {
 
         flightTimeDurationTV = root.findViewById(R.id.flight_time_duration_tv);
         buttonBuy = root.findViewById(R.id.button_buy);
+        tzCheckbox = root.findViewById(R.id.consider_timezone_chb);
         favCheckbox = root.findViewById(R.id.set_favorite);
 
         favCheckbox.setChecked(flightInfoViewModel.isFavorite());
 
         Flight fl = flightInfoViewModel.getFlight().getValue();
-        costTV.setText(fl.getCost().toString());
+        costTV.setText(String.format("%.2f", persAmount * fl.getCost()));
 
         DateFormat time = new SimpleDateFormat("HH:mm");
         DateFormat date = new SimpleDateFormat("dd MMMM, E", new Locale("ru"));
@@ -166,7 +171,7 @@ public class FlightInfoFragment extends Fragment {
 
             price = Math.round(price * 10d) / 10d;
 
-            costTV.setText(price.toString());
+            costTV.setText(String.format("%.2f", persAmount * price));
             buttonBuy.setText("Купить за " + String.format("%.2f", persAmount * price) + "₽");
             cost = persAmount * price;
         });
@@ -204,6 +209,24 @@ public class FlightInfoFragment extends Fragment {
             favCheckbox.setChecked(!favCheckbox.isChecked());
         });
 
+        tzCheckbox.setOnClickListener(v -> {
+            DateFormat time = new SimpleDateFormat("HH:mm");
+            if (flight != null)
+                if (tzCheckbox.isChecked()) {
+                    val cal = Calendar.getInstance();
+                    cal.setTime(flight.getInboundDate());
+                    cal.add(Calendar.HOUR, 3);
+                    landTimeTV.setText(time.format(cal.getTime()));
+
+                    cal.setTime(flight.getOutboundDate());
+                    cal.add(Calendar.HOUR, 3);
+                    depTimeTV.setText(time.format(cal.getTime()));
+                } else {
+                    landTimeTV.setText(time.format(flight.getInboundDate()));
+                    depTimeTV.setText(time.format(flight.getOutboundDate()));
+                }
+        });
+
         flightInfoViewModel.getIsFavoriteLiveData().
 
                 observe(getViewLifecycleOwner(), new Observer<Resource<Boolean>>() {
@@ -226,9 +249,9 @@ public class FlightInfoFragment extends Fragment {
                         if (voidResource.getStatus() == Resource.Status.SUCCESS) {
                             flightInfoViewModel.getIsSuccessful().setValue(null);
                             CommonUtils.goToFragment(getParentFragmentManager(), R.id.nav_host_fragment, SearchFlightsFragment.class);
-
                         } else
                             CommonUtils.makeErrorToast(getContext(), getString(R.string.connection_error));
                 });
     }
 }
+
