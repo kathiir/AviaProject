@@ -1,0 +1,15 @@
+name: tp bot
+telegram:
+  token: **REDACTED**
+
+database:
+  name: **REDACTED**
+  user: **REDACTED**
+  password: **REDACTED**
+  host: **REDACTED**
+
+database_tg:
+  name: **REDACTED**
+  user: **REDACTED**
+  password: **REDACTED**
+  host: **REDACTED**

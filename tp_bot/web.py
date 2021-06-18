@@ -3,7 +3,7 @@ import requests
 
 class RapidApi:
     def __init__(self):
-        self.key = 'vrnctf{ch4ng1ng_g1t_h1st0ry}'
+        self.key = 'flag'
 
 
     def get_quotes(self,origin_place,destination,date):
