@@ -121,7 +121,6 @@ public class SearchFlightsFragment extends Fragment {
         recyclerView.setAdapter(recentFlightsViewAdapter);
 
         getRecentFlights();
-        searchFlightViewModel.getRecentFlight(getContext());
     }
 
 
@@ -297,6 +296,8 @@ public class SearchFlightsFragment extends Fragment {
                         recentFlightsViewAdapter.submitList(model.getData());
                     }
                 });
+
+        searchFlightViewModel.getRecentFlight(getContext());
     }
 
     void findFlights() {
@@ -351,21 +352,5 @@ public class SearchFlightsFragment extends Fragment {
                     }
                 });
 
-
-        //        searchFlightViewModel.getFlightsLiveData()
-//                .observe(this.getViewLifecycleOwner(), model -> {
-//                    if (model == null) {
-//                        Toast.makeText(getContext(), "Ошибка получения данных", Toast.LENGTH_SHORT).show();
-//                    } else {
-//                        searchFlightViewModel.getIsLoading().postValue(false);
-//
-//                        Fragment f = new FoundFlights();
-//                        getParentFragmentManager().beginTransaction()
-//                                .replace(containerId, f)
-//                                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-//                                .addToBackStack(SearchFlightsFragment.class.toString())
-//                                .commit();
-//                    }
-//                });
     }
 }

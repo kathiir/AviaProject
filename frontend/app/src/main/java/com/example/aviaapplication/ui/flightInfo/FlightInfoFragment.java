@@ -179,16 +179,16 @@ public class FlightInfoFragment extends Fragment {
         });
 
         buttonBuy.setOnClickListener(v -> {
-                    if (flightInfoViewModel.isLoggedIn(getContext())) {
-                        flightInfoViewModel.buyTicket(flight, cost, persAmount);
+            if (flightInfoViewModel.isLoggedIn(getContext())) {
+                flightInfoViewModel.buyTicket(flight, cost, persAmount);
 
-                        Map<String, Object> result = new HashMap<>();
-                        result.put("Ticket cost", cost);
-                        result.put("Passenger count", persAmount);
-                        YandexMetrica.reportEvent(getString(R.string.event_user_bought_tickets), result);
-                    } else
-                        CommonUtils.makeErrorToast(getContext(), getString(R.string.login_error));
-                });
+                Map<String, Object> result = new HashMap<>();
+                result.put("Ticket cost", cost);
+                result.put("Passenger count", persAmount);
+                YandexMetrica.reportEvent(getString(R.string.event_user_bought_tickets), result);
+            } else
+                CommonUtils.makeErrorToast(getContext(), getString(R.string.login_error));
+        });
 
         favCheckbox.setOnClickListener(v ->
 
@@ -222,10 +222,13 @@ public class FlightInfoFragment extends Fragment {
                 observe(getViewLifecycleOwner(), voidResource ->
 
                 {
-                    if (voidResource.getStatus() == Resource.Status.SUCCESS)
-                        CommonUtils.goToFragment(getParentFragmentManager(), R.id.nav_host_fragment, SearchFlightsFragment.class);
-                    else
-                        CommonUtils.makeErrorToast(getContext(), getString(R.string.connection_error));
+                    if (voidResource != null)
+                        if (voidResource.getStatus() == Resource.Status.SUCCESS) {
+                            flightInfoViewModel.getIsSuccessful().setValue(null);
+                            CommonUtils.goToFragment(getParentFragmentManager(), R.id.nav_host_fragment, SearchFlightsFragment.class);
+
+                        } else
+                            CommonUtils.makeErrorToast(getContext(), getString(R.string.connection_error));
                 });
     }
 }

@@ -1,6 +1,7 @@
 package com.example.aviaapplication.ui.home;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -45,8 +46,12 @@ public class HomeFragment extends Fragment implements ActivityNavigation {
     private TextView ticketCount;
     private RoundedImageView avatarView;
 
-    private Button telegramInitDialogButton, temp, temp1;
+    private Button telegramInitDialogButton;
     private Handler timerHandler;
+
+    private UserRepository user;
+
+    private final String TELEGRAM_LINK = "https://t.me/avia_project_bot?start=";
 
     private GoogleSignInClient mGoogleSignInClient;
 
@@ -54,6 +59,8 @@ public class HomeFragment extends Fragment implements ActivityNavigation {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
+
+        this.user = UserRepository.getInstance();
 
         YandexMetrica.reportEvent(getString(R.string.event_user_swithed_to_home));
 
@@ -76,10 +83,6 @@ public class HomeFragment extends Fragment implements ActivityNavigation {
         avatarView = root.findViewById(R.id.avatar_iv);
         ticketCount = root.findViewById(R.id.tickets_count_textview);
 
-        temp = root.findViewById(R.id.temp);  //remove before production
-        temp1 = root.findViewById(R.id.temp1);
-        temp.setVisibility(View.GONE);
-        temp1.setVisibility(View.GONE);
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 //.requestServerAuthCode(getString(R.string.server_client_id))
@@ -152,7 +155,13 @@ public class HomeFragment extends Fragment implements ActivityNavigation {
         });
 
         telegramConfirmDialogButton.setOnClickListener(v -> {
-            CommonUtils.makeErrorToast(this.getContext(), getString(R.string.not_implemented));
+
+            String url = TELEGRAM_LINK + user.getCurrentUser(getContext()).getEmail();
+            Intent i = new Intent(Intent.ACTION_VIEW);
+            i.setData(Uri.parse(url));
+            startActivity(i);
+
+            //CommonUtils.makeErrorToast(this.getContext(), getString(R.string.not_implemented));
         });
 
         loginViewModel.getFlightCountData().observe(getViewLifecycleOwner(),
@@ -162,17 +171,6 @@ public class HomeFragment extends Fragment implements ActivityNavigation {
                     else
                         ticketCount.setText(String.valueOf(0));
                 });
-
-        temp.setOnClickListener(v -> {
-//            CommonUtils.goToFragment(getParentFragmentManager(),
-//                    R.id.nav_host_fragment, FlightInfoFragment.getInstance(1L));
-        });
-
-        temp1.setOnClickListener(v -> {
-            CommonUtils.goToFragment(getParentFragmentManager(),
-                    R.id.nav_host_fragment, PassengerListFragment.class);
-        });
-
     }
 
 

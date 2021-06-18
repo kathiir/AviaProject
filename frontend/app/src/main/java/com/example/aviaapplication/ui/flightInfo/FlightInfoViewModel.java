@@ -126,7 +126,7 @@ public class FlightInfoViewModel extends AndroidViewModel {
         return flight;
     }
 
-    public LiveData<Resource<Void>> getIsSuccessful(){
+    public MutableLiveData<Resource<Void>> getIsSuccessful(){
         return isSuccessful;
     }
 

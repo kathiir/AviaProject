@@ -28,7 +28,4 @@ public class UserRepository {
         return new User(account.getDisplayName(), CommonUtils.cipherEmail(account.getEmail()), account.getPhotoUrl());
     }
 
-
-
-
 }

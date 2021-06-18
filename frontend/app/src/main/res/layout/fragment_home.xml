@@ -188,7 +188,6 @@
                 <Button
                     android:id="@+id/button_teleg_notifications"
                     style="@style/ButtonWithBorders"
-                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="0dp"
@@ -222,16 +221,6 @@
 
 
             </LinearLayout>
-
-            <Button
-                android:id="@+id/temp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <Button
-                android:id="@+id/temp1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
 
         </LinearLayout>
 
