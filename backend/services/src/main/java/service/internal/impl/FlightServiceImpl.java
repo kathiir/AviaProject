@@ -79,9 +79,8 @@ public class FlightServiceImpl implements FlightService {
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String outDate = dateFormat.format(flight.getOutboundDate());
-        String inDate = dateFormat.format(flight.getInboundDate());
 
-        Response response = searchRequestBuilder(flight.getDestinationPlace().getPlaceId(), flight.getOriginPlace().getPlaceId(), outDate, inDate);
+        Response response = searchRequestBuilder(flight.getDestinationPlace().getPlaceId(), flight.getOriginPlace().getPlaceId(), outDate);
 
         if (response.isSuccessful()) {
             Gson gson = new GsonBuilder()
@@ -141,7 +140,7 @@ public class FlightServiceImpl implements FlightService {
             String inbDate = dateFormat.format(modelList.get(i).getInboundDate());
 
             Response response = searchRequestBuilder(modelList.get(i).getDestinationPlace().getPlaceId(),
-                    modelList.get(i).getOriginPlace().getPlaceId(), outDate, inbDate);
+                    modelList.get(i).getOriginPlace().getPlaceId(), outDate);
             if (response.isSuccessful()) {
                 Gson gson = new GsonBuilder()
                         .registerTypeAdapter(Date.class, new DateDeserializer())
@@ -157,10 +156,10 @@ public class FlightServiceImpl implements FlightService {
     }
 
 
-    private Response searchRequestBuilder(String destinationPlace, String originPlace, String outDate, String inDate) throws IOException {
+    private Response searchRequestBuilder(String destinationPlace, String originPlace, String outDate) throws IOException {
         Request request = new Request.Builder()
                 .url("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/ru/rub/ru/" + originPlace + "/"
-                        + destinationPlace + "/" + outDate + "?inboundpartialdate="+inDate)
+                        + destinationPlace + "/" + outDate)
                 .get()
                 .addHeader("x-rapidapi-key", rapid)
                 .addHeader("x-rapidapi-host", host)
