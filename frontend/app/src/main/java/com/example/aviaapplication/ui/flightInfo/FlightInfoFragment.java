@@ -134,8 +134,8 @@ public class FlightInfoFragment extends Fragment {
 
         landTimeTV.setText(time.format(fl.getInboundDate()));
         landDateTV.setText(date.format(fl.getInboundDate()));
-        landCityTV.setText(fl.getOriginPlace().getCountryName());
-        landAirportTV.setText(fl.getOriginPlace().getPlaceName());
+        landCityTV.setText(fl.getDestinationPlace().getCountryName());
+        landAirportTV.setText(fl.getDestinationPlace().getPlaceName());
 
         buttonBuy.setText("Купить за " + String.format("%.2f", persAmount * fl.getCost()) + "₽");
         cost = persAmount * fl.getCost();
@@ -254,4 +254,3 @@ public class FlightInfoFragment extends Fragment {
                 });
     }
 }
-
